@@ -1,4 +1,4 @@
-import Appp from "./Mixer/Exercises/CreateUseFetch/Appp";
+import CreateUseFetch from "./Mixer/Exercises/CreateUseFetch/CreateUseFetch";
 import FormNewEditDelete from "./Mixer/Exercises/FormNewEditDelete/FormNewEditDelete";
 import Z from "./Mixer/Z/Z";
 
@@ -8,7 +8,7 @@ export default function App() {
     <>
       {/* <Z/> */}
       {/* <FormNewEditDelete/> */}
-      <Appp/>
+      <CreateUseFetch/>
     </>
   )
 }
