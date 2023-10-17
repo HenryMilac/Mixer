@@ -1,3 +1,4 @@
+import IconMenuToNavbar from "./Mixer/Components/IconMenuToNavbar/IconMenuToNavbar";
 import Sidebar from "./Mixer/Components/Sidebar/Sidebar";
 import CreateUseFetch from "./Mixer/Exercises/CreateUseFetch/CreateUseFetch";
 import FormNewEditDelete from "./Mixer/Exercises/FormNewEditDelete/FormNewEditDelete";
@@ -10,7 +11,12 @@ export default function App() {
       {/* <Z/> */}
       {/* <FormNewEditDelete/> */}
       {/* <CreateUseFetch/> */}
-      <Sidebar/>
+      {/* <Sidebar/> */}
+      <IconMenuToNavbar/>
+
+
+
+      
     </>
   )
 }
