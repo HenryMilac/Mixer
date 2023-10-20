@@ -8,11 +8,11 @@ export default function App() {
 
   return (
     <>
-      {/* <Z/> */}
+      <Z/>
       {/* <FormNewEditDelete/> */}
       {/* <CreateUseFetch/> */}
       {/* <Sidebar/> */}
-      <IconMenuToNavbar/>
+      {/* <IconMenuToNavbar/> */}
 
 
 
