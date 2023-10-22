@@ -3,6 +3,7 @@ import { useState } from "react"
 export default function FormNewEditDelete() {
 
     const [persons, setPersons] = useState([])
+    const [person, setPerson] = useState({})
     const [name, setName] = useState('')
     const [age, setAge] = useState('')
     
@@ -19,6 +20,8 @@ export default function FormNewEditDelete() {
         setName('')
         setAge('')
     }
+
+    
 
     return (
         <div>
@@ -39,12 +42,13 @@ export default function FormNewEditDelete() {
                 </div>
                 <input type="submit" value="Send" />
             </form>
+            <hr />
             {persons.map((person) => (
                 <div className="flex justify-between" key={person.id}>
                     <p>{person.name}</p>
                     <p>{person.age}</p>
                     <div className="">
-                        <button>Edit</button>
+                        <button onClick={() => {setPerson(person)}}>Edit</button>
                         <button>Delete</button>
                     </div>
                 </div>
