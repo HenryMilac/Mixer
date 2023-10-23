@@ -1,7 +1,8 @@
-# 📝 Welcome to my Notepad
+# 📝 Welcome to my Notepad!
 
 ```js
-   nothingToWatch: {
-      message: 'This repository is where I practice'
+   const nothingToWatch = {
+      message: 'This repository is where I practice',
+      recommendation: 'Look at my other repositories'
    }
 ```
