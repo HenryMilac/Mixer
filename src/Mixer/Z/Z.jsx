@@ -1,7 +1,7 @@
-export default function Z() {
+export default function FormNewEditDelete() {
+
     return (
         <div>
-            <p></p>
         </div>
     )
 }
