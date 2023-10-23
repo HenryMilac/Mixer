@@ -1,4 +1,4 @@
-# Welcome to my Notepad 📝
+# 📝 Welcome to my Notepad
 
 ```js
    nothingToWatch: {
