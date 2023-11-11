@@ -3,11 +3,10 @@ import { useEffect, useState } from "react"
 export default function DarkModeTailwind() {
 
     const [theme, setTheme] = useState('light')
-    
+
     const handleChangeTheme = () => {
         setTheme(prevTheme => prevTheme == 'light' ? 'dark' : 'light')
     }
-
     useEffect(() => {
         if(theme == 'dark'){
             document.querySelector('html')?.classList.add('dark')

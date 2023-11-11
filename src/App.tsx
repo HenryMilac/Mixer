@@ -4,6 +4,7 @@ import DarkModeTailwind from "./Mixer/Exercises/DarkModeTailwind/DarkModeTailwin
 import AxiosConsuming from "./Mixer/Exercises/Fetching/AxiosConsuming/AxiosConsuming";
 import CreateUseFetch from "./Mixer/Exercises/Fetching/CreateUseFetch/CreateUseFetch";
 import FormNewEditDelete from "./Mixer/Exercises/FormNewEditDelete/FormNewEditDelete";
+import Z from "./Mixer/Z/Z";
 
 export default function App() {
 
@@ -15,8 +16,10 @@ export default function App() {
       {/* <Sidebar/> */}
       {/* <IconMenuToNavbar/> */}
       {/* <AxiosConsuming/> */}
-      <DarkModeTailwind/>
+      {/* <DarkModeTailwind/> */}
       
+
+      <Z/>
     </>
   )
 }
