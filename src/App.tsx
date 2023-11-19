@@ -11,7 +11,7 @@ export default function App() {
   return (
     <>
 
-      {/* <FormNewEditDelete/> */}
+      <FormNewEditDelete/>
       {/* <CreateUseFetch/> */}
       {/* <Sidebar/> */}
       {/* <IconMenuToNavbar/> */}
