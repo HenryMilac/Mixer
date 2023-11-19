@@ -26,9 +26,17 @@ export default function FormNewEditDelete() {
             personObject.id = Date.now()
             setPersons([...persons, personObject])
         }
-      
+
         setName('')
         setAge('')
+    }
+
+    const handleDelete = id => {
+        const confirmDelete = confirm('Seguro que quiere eliminar?')
+        if(confirmDelete){
+            const personsUpdate = persons.filter(person => person.id !== id)
+            setPersons(personsUpdate)
+        }
     }
 
     useEffect(() => {
@@ -57,13 +65,14 @@ export default function FormNewEditDelete() {
                 </div>
                 <input type="submit" value={person.id ? 'Edit': 'Send'} />
             </form>
+            
             {persons.map((person) => (
                 <div className="flex justify-between" key={person.id}>
                     <p>{person.name}</p>
                     <p>{person.age}</p>
                     <div className="">
                         <button onClick={() => setPerson(person)}>Edit</button>
-                        <button>Delete</button>
+                        <button onClick={() => handleDelete(person.id)}>Delete</button>
                     </div>
                 </div>
             ))}
