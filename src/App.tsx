@@ -21,10 +21,10 @@ export default function App() {
       {/* <IconMenuToNavbar/> */}
       {/* <AxiosConsuming/> */}
       {/* <DarkModeTailwind/> */}
-      <SwipeEditDelete/>
+      {/* <SwipeEditDelete/> */}
 
 
-      {/* <Z/> */}
+      <Z/>
 
 
 

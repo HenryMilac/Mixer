@@ -17,8 +17,8 @@ export default function FormNewEditDelete() {
 
         if(person.id){
             personObject.id = person.id
-            const personUpdate = persons.map(
-                personState => personState.id === person.id ? personObject : personState
+            const personUpdate = persons.map(personState => 
+                personState.id === person.id ? personObject : personState
             )
             setPersons(personUpdate)
             setPerson({})
