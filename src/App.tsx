@@ -7,6 +7,7 @@ import CreateUseFetch from "./Mixer/Issues/Fetching/CreateUseFetch/CreateUseFetc
 import FormNewEditDelete from "./Mixer/Exercises/FormNewEditDelete";
 import Zustand from "./Mixer/Issues/Zustand/Zustand";
 import Z from "./Mixer/Z/Z";
+import NotesEditDeleteModalZustand from "./Mixer/Exercises/NotesEditDeleteModalZustand";
 
 export default function App() {
 
@@ -24,8 +25,9 @@ export default function App() {
       {/* <DarkModeTailwind/> */}
       {/* <SwipeEditDelete/> */}
       {/* <Zustand/> */}
+      <NotesEditDeleteModalZustand/>
 
-      <Z/>
+      {/* <Z/> */}
 
 
 
