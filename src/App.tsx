@@ -1,29 +1,15 @@
-import ZustandFernandoHerrera from "./Mixer/Issues/Zustand/ZustandFernandoHerrera/ZustandFernandoHerrera";
+import ZustandFazt from "./Mixer/Issues/ManageState/Zustand/ZustandFazt/ZustandFazt";
+import ZustandFernandoHerrera from "./Mixer/Issues/ManageState/Zustand/ZustandFernandoHerrera/ZustandFernandoHerrera";
 
 export default function App() {
 
   return (
     <>
-
-
-
-
-      {/* <FormNewEditDelete/> */}
-      {/* <CreateUseFetch/> */}
-      {/* <Sidebar/> */}
-      {/* <IconMenuToNavbar/> */}
-      {/* <AxiosConsuming/> */}
-      {/* <DarkModeTailwind/> */}
-      {/* <SwipeEditDelete/> */}
-      {/* <Zustand/> */}
+      {/* <ZustandFazt/> */}
       <ZustandFernandoHerrera/>
 
+
       {/* <Z/> */}
-
-
-
-
-
     </>
   )
 }
