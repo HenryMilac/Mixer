@@ -1,13 +1,4 @@
-import IconMenuToNavbar from "./Mixer/Components/IconMenuToNavbar";
-import Sidebar from "./Mixer/Components/SideBar";
-import SwipeEditDelete from "./Mixer/Components/SwipeEditDelete";
-import DarkModeTailwind from "./Mixer/Exercises/DarkModeTailwind";
-import AxiosConsuming from "./Mixer/Issues/Fetching/AxiosConsuming/AxiosConsuming";
-import CreateUseFetch from "./Mixer/Issues/Fetching/CreateUseFetch/CreateUseFetch";
-import FormNewEditDelete from "./Mixer/Exercises/FormNewEditDelete";
-import Zustand from "./Mixer/Issues/Zustand/Zustand";
-import Z from "./Mixer/Z/Z";
-import NotesEditDeleteModalZustand from "./Mixer/Exercises/NotesEditDeleteModalZustand";
+import ZustandFernandoHerrera from "./Mixer/Issues/Zustand/ZustandFernandoHerrera/ZustandFernandoHerrera";
 
 export default function App() {
 
@@ -25,7 +16,7 @@ export default function App() {
       {/* <DarkModeTailwind/> */}
       {/* <SwipeEditDelete/> */}
       {/* <Zustand/> */}
-      <NotesEditDeleteModalZustand/>
+      <ZustandFernandoHerrera/>
 
       {/* <Z/> */}
 
