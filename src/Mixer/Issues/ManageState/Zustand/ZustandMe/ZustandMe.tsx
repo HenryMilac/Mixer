@@ -2,6 +2,7 @@ import { Products } from "./store/products.store"
 
 export default function ZustandMe() {
     const products = Products(state => state.products)
+    const clearProducts = Products(state => state.clearProducts)
 
     return (
         <div className="p-5">
@@ -16,7 +17,7 @@ export default function ZustandMe() {
                     {/* ----- Buttons */}
                     <div className="flex justify-around py-5">
                         <button className="border border-gray-300 p-2 rounded-md">Do Nothing</button>
-                        <button className="border border-gray-300 p-2 rounded-md">Clear Products</button>
+                        <button onClick={clearProducts} className="border border-gray-300 p-2 rounded-md">Clear Products</button>
                         <button className="border border-gray-300 p-2 rounded-md">Add Product</button>
                     </div>
 
