@@ -1,6 +1,6 @@
+import ZustandFernandoHerrera from "./MixerFront/Issues/ManageState/Zustand/ZustandFernandoHerrera/ZustandFernandoHerrera";
+import Z from "./MixerFront/Z/Z";
 
-import ZustandFernandoHerrera from "./Mixer/Issues/ManageState/Zustand/ZustandFernandoHerrera/ZustandFernandoHerrera";
-import ZustandMe from "./Mixer/Issues/ManageState/Zustand/ZustandMe/ZustandMe";
 
 export default function App() {
 
@@ -10,7 +10,7 @@ export default function App() {
       {/* <ZustandMe/> */}
       <ZustandFernandoHerrera/>
 
-      {/* <Z/> */}
+      <Z/>
     </>
   )
 }

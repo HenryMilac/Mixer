@@ -24,7 +24,7 @@ export default function ZustandFernandoHerrera() {
 
             
             {/* ---------- Section 01 */}
-            {/* <div className="flex flex-col gap-10">
+            <div className="flex flex-col gap-10">
                 <div>
                     <h1 className="text-xl text-red-600">Section 01:</h1>
                     <hr />
@@ -76,7 +76,7 @@ export default function ZustandFernandoHerrera() {
                         <p key={product.id}>{product.name}</p>
                     ))}
                 </div>
-            </div> */}
+            </div>
 
 
 
@@ -85,7 +85,7 @@ export default function ZustandFernandoHerrera() {
 
 
             {/* ---------- Section 02 */}
-            <div>
+            {/* <div>
                 <div>
                     <h1 className="text-xl text-red-600">Section 02:</h1>
                     <hr />
@@ -94,7 +94,7 @@ export default function ZustandFernandoHerrera() {
                 <div>
                     
                 </div>
-            </div>
+            </div> */}
 
 
 
