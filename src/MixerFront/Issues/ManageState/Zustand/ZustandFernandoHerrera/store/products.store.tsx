@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 interface Count {
-    products: products[]
+    products: Products[]
     countProduct1: number
     countProduct2: number
     totalProducts: {totalProductsCount: number}
@@ -13,12 +13,15 @@ interface Count {
     clearProducts: () => void
     addProduct: () => void
 }
-interface products {
+interface Products {
     id: number
     name: string
 }
 
-export const count = create<Count>((set, get) => ({
+
+
+
+export const useProductsStore = create<Count>((set, get) => ({
     products: [
         {id: 1, name: 'Product 01'},
         {id: 2, name: 'Product 02'},

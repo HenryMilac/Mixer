@@ -8,7 +8,7 @@ export default function App() {
     <>
       {/* <ZustandFazt/> */}
       {/* <ZustandMe/> */}
-      {/* <ZustandFernandoHerrera/> */}
+      <ZustandFernandoHerrera/>
 
       {/* <Z/> */}
     </>
