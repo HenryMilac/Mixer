@@ -15,11 +15,11 @@ export default function FormAddEditDeleteZustand() {
                 <div className="flex">
                     <div className="">
                         <label htmlFor="">Note:</label>
-                        <input type="text" className="border border-gray-300"/>
+                        <input type="text" className="border border-gray-300 text-gray-500"/>
                     </div>
                     <div>
                         <label htmlFor="">Category:</label>
-                        <input type="text" className="border border-gray-300"/>
+                        <input type="text" className="border border-gray-300 text-gray-500"/>
                     </div>
                 </div>
                 <input type="submit" value="Add Note" className="border border-gray-300 px-4"/>
