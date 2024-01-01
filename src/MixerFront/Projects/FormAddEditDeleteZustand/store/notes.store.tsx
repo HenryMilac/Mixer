@@ -14,7 +14,7 @@ interface NotesActions {
 
 export const useNotesStore = create<NotesState & NotesActions>()(() => ({
     notes: [
-        {id: 1, note: 'This is a note on proving', category: 'Cat'},
-        {id: 2, note: 'This is a note on proving, this a note', category: 'Cat2'}
+        {id: 1, note: 'This is a note on proving', category: 'Categ.'},
+        {id: 2, note: 'This is a note on proving, this a note', category: 'Categ. 2'}
     ]
 }))

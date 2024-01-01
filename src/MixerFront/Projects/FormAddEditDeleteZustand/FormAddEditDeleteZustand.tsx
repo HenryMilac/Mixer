@@ -31,7 +31,7 @@ export default function FormAddEditDeleteZustand() {
 
                 <div className="flex flex-col gap-y-3">
                     {notes.map(note => (
-                        <div className="flex justify-between border border-gray-200 p-2">
+                        <div key={note.id} className="flex justify-between border border-gray-200 p-2">
                             <p>{note.note}</p>
                             <div>
                                 <p>{note.category}</p>
