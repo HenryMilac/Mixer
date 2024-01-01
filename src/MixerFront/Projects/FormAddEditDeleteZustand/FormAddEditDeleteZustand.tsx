@@ -1,6 +1,11 @@
+import { useNotesStore } from "./store/notes.store"
+
 export default function FormAddEditDeleteZustand() {
+    
+    const notes = useNotesStore((state) => state.notes)    
+
     return (
-        <div className="p-5 flex flex-col gap-y-5">
+        <div className="p-5 flex flex-col gap-y-5 bg-black text-white h-full">
             <div>
                 <h1>Formulario:</h1>
                 <hr />
@@ -23,14 +28,16 @@ export default function FormAddEditDeleteZustand() {
 
 
                 <div className="flex flex-col gap-y-3">
-                    <div className="flex justify-between border border-gray-200 p-2">
-                        <p>This a note on proving, this a note on proving</p>
-                        <div>
-                            <p>Category</p>
-                            <button>Edit</button>
-                            <button>Delete</button>
+                    {notes.map(note => (
+                        <div className="flex justify-between border border-gray-200 p-2">
+                            <p>{note.note}</p>
+                            <div>
+                                <p>{note.category}</p>
+                                <button>Edit</button>
+                                <button>Delete</button>
+                            </div>
                         </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </div>
