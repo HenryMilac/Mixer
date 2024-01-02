@@ -5,7 +5,7 @@ export default function FormAddEditDeleteZustand() {
     const notes = useNotesStore((state) => state.notes)    
 
     return (
-        <div className="p-5 flex flex-col gap-y-5 bg-black text-white h-full">
+        <div className="p-5 flex flex-col gap-y-5 dark:bg-black dark:text-white h-full">
 
             <form className="border border-gray-300 p-3 flex flex-col gap-y-3">
                 <div>
