@@ -1,10 +1,11 @@
-import FormAddEditDeleteZustand from "./MixerFront/Projects/FormAddEditDeleteZustand/FormAddEditDeleteZustand";
+import TranslatePage from "./MixerFront/Issues/TranslatePage/TranslatePage";
+
 
 export default function App() {
 
   return (
     <>
-      <FormAddEditDeleteZustand/>
+      <TranslatePage/>
     </>
   )
 }
