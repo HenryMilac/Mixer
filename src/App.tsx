@@ -1,11 +1,9 @@
-import TranslatePage from "./MixerFront/Issues/TranslatePage/TranslatePage";
-
+import Reacti18next from "./MixerFront/Exercises/TranslatePage/react-i18next/Reacti18next";
 
 export default function App() {
-
   return (
     <>
-      <TranslatePage/>
+      <Reacti18next/>
     </>
   )
 }
