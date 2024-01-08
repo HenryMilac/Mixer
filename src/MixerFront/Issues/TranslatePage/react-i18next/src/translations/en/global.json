@@ -1,0 +1,27 @@
+{
+    "dataInformation": [
+        {
+            "id": 1,
+            "nameProduct": "Iphone 12",
+            "categoryProduct": "Phones",
+            "sales": [
+                {
+                    "id": "P1",
+                    "date": "2021-01-01",
+                    "total": "13200",
+                    "colors&units": [
+                        {
+                            "color": "red",
+                            "units": "2"
+                        },
+                        {
+                            "color": "blue",
+                            "units": "1"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "buttonTranslate": "Translate"
+}
