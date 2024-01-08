@@ -2,6 +2,8 @@ import BtnTranslate from "./src/components/BtnTranslate";
 import ClientCard from "./src/components/ClientCard";
 
 
+
+
 export default function Z() {
     return(
         <div className="p-5 relative pb-32">
@@ -15,4 +17,4 @@ export default function Z() {
             </div>
         </div>
     )
-}  
+}
