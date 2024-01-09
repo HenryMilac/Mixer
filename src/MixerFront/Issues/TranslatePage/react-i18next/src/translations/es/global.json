@@ -1,0 +1,29 @@
+{
+    "titleApp": "Productos",
+    "dataInformation": [
+        {
+            "id": 1,
+            "nameProduct": "MiIphone 12",
+            "categoryProduct": "Teléfonos",
+            "sales": [
+                {
+                    "id": "P1",
+                    "dateTitle": "Fecha",
+                    "date": "2021-01-01",
+                    "total": "13200",
+                    "colors&units": [
+                        {
+                            "color": "Rojo",
+                            "units": "2"
+                        },
+                        {
+                            "color": "Azul",
+                            "units": "1"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "buttonTranslate": "Traducir"
+}
