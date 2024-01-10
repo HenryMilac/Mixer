@@ -1,18 +1,15 @@
-
-
-// CardSale.tsx
-import React from 'react';
-
-const CardSale: React.FC<{ sale: any }> = ({ sale }) => {
+export default function CardSale({ saleData }) {
   return (
-    <div>
-      <h3>{sale.dateTitle}: {sale.date}</h3>
-      <p>Total: {sale.total}</p>
-      {sale['colors&units'].map((item, index) => (
-        <p key={index}>{item.color}: {item.units}</p>
-      ))}
-    </div>
-  );
-};
-
-export default CardSale;
+    <div key={saleData.id} className='ml-10'>
+    <p>{saleData.dateTitle}</p>
+    <p>{saleData.date}</p>
+    <p>S/. {saleData.total}</p>
+    {saleData["colors&units"].map(colorUnit => (
+        <div key={colorUnit.color} className='ml-10'>
+            <p>{colorUnit.color}</p>
+            <p>{colorUnit.units} units</p>
+        </div>
+    ))}
+</div>
+  )
+}

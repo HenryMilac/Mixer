@@ -1,17 +1,34 @@
-// CardProduct.tsx
-import React from 'react';
-import CardSale from './CardSale';
+import CardSale from "./CardSale";
 
-const CardProduct: React.FC<{ product: any }> = ({ product }) => {
+interface CardProductProps {
+  productData: ProductData;
+}
+interface ProductData {
+  id: number;
+  nameProduct: string;
+  categoryProduct: string;
+  salesTitle: string;
+  sales: {
+    id: number;
+    dateTitle: string;
+    date: string;
+    total: string;
+    "colors&units": { color: string; units: string; }[];
+  }[];
+}
+
+
+export default function CardProduct({ productData }: CardProductProps) {
+  const salesData = productData.sales;
+
   return (
-    <div>
-      <h2>{product.nameProduct}</h2>
-      <p>{product.categoryProduct}</p>
-      {product.sales.map((sale) => (
-        <CardSale key={sale.id} sale={sale} />
+    <div key={productData.id}>
+      <p>{productData.nameProduct}</p>
+      <p>{productData.categoryProduct}</p>
+      <p>{productData.salesTitle}:</p>
+      {salesData.map((saleData) => (
+        <CardSale key={saleData.id} saleData={saleData} />
       ))}
     </div>
   );
-};
-
-export default CardProduct;
+}

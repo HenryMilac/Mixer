@@ -8,7 +8,7 @@
             "salesTitle": "Sales",
             "sales": [
                 {
-                    "id": "P1",
+                    "id": 1,
                     "dateTitle": "Date",
                     "date": "2021-01-01",
                     "total": "13200",
@@ -24,7 +24,7 @@
                     ]
                 },
                 {
-                    "id": "P2",
+                    "id": 2,
                     "dateTitle": "Date",
                     "date": "2023-11-12",
                     "total": "843200",
@@ -52,14 +52,14 @@
             "salesTitle": "Sales",
             "sales": [
                 {
-                    "id": "P2",
+                    "id": 1,
                     "dateTitle": "Date",
                     "date": "2021-01-01",
                     "total": "131100",
                     "colors&units": [
                         {
                             "color": "Purple",
-                            "units": "21"
+                            "units": "210"
                         },
                         {
                             "color": "Pink",

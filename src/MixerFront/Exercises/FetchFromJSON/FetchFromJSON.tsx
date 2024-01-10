@@ -1,4 +1,5 @@
 // App.tsx
+import CardProduct from './src/components/CardProduct';
 import data from './src/data.json';
 
 export default function FetchFromJSON() {
@@ -10,26 +11,11 @@ export default function FetchFromJSON() {
             <p>Data information:</p>
             <div className='ml-10'>
                 {productsData.map(productData => {
-                    const salesData: { id: string; dateTitle: string; date: string; total: string; "colors&units": { color: string; units: string; }[]; }[] = productData.sales;
-                    return (
-                        <div key={productData.id}>
-                            <p>{productData.nameProduct}</p>
-                            <p>{productData.categoryProduct}</p>
-                            <p>{productData.salesTitle}:</p>
-                            {salesData.map(saleData => (
-                                <div key={saleData.id} className='ml-10'>
-                                    <p>{saleData.dateTitle}</p>
-                                    <p>{saleData.date}</p>
-                                    <p>S/. {saleData.total}</p>
-                                    {saleData["colors&units"].map(colorUnit => (
-                                        <div className='ml-10'>
-                                            <p>{colorUnit.color}</p>
-                                            <p>{colorUnit.units} units</p>
-                                        </div>
-                                    ))}
-                                </div>
-                            ))}
-                        </div>
+                    return(
+                        <CardProduct 
+                            key={productData.id}
+                            productData={productData}
+                        />
                     )
                 })}
             </div>
