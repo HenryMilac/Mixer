@@ -1,0 +1,74 @@
+{
+    "titleApp": "Products",
+    "productsData": [
+        {
+            "id": 1,
+            "nameProduct": "Iphone 12",
+            "categoryProduct": "Phones",
+            "salesTitle": "Sales",
+            "sales": [
+                {
+                    "id": "P1",
+                    "dateTitle": "Date",
+                    "date": "2021-01-01",
+                    "total": "13200",
+                    "colors&units": [
+                        {
+                            "color": "Red",
+                            "units": "49"
+                        },
+                        {
+                            "color": "Blue",
+                            "units": "9"
+                        }
+                    ]
+                },
+                {
+                    "id": "P2",
+                    "dateTitle": "Date",
+                    "date": "2023-11-12",
+                    "total": "843200",
+                    "colors&units": [
+                        {
+                            "color": "Yelow",
+                            "units": "321"
+                        },
+                        {
+                            "color": "Brown",
+                            "units": "96"
+                        },
+                        {
+                            "color": "Gold",
+                            "units": "4390"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "nameProduct": "MacBook Pro",
+            "categoryProduct": "Macs",
+            "salesTitle": "Sales",
+            "sales": [
+                {
+                    "id": "P2",
+                    "dateTitle": "Date",
+                    "date": "2021-01-01",
+                    "total": "131100",
+                    "colors&units": [
+                        {
+                            "color": "Purple",
+                            "units": "21"
+                        },
+                        {
+                            "color": "Pink",
+                            "units": "4"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "buttonTranslate": "Translate"
+}
