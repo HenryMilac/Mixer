@@ -24,7 +24,7 @@ export default function FetchFromJSON() {
                                     {saleData["colors&units"].map(colorUnit => (
                                         <div className='ml-10'>
                                             <p>{colorUnit.color}</p>
-                                            <p>{colorUnit.units}</p>
+                                            <p>{colorUnit.units} units</p>
                                         </div>
                                     ))}
                                 </div>
