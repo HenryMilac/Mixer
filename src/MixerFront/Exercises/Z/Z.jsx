@@ -1,9 +1,7 @@
-
-
-export default function Z() {
-    return(
+function Z() {
+    return (
         <div>
             
         </div>
     )
-}  
+}
