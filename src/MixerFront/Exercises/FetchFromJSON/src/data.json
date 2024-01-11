@@ -1,31 +1,31 @@
 {
     "title": "Apple Store",
-    "group1": [
+    "stores": [
         {
             "id": "G1-1",
-            "name": "Huancayo",
-            "group2": [
+            "city": "Huancayo",
+            "sellers": [
                 {
                     "id": "G2-1",
                     "name": "Henry Ramirez",
-                    "group3": [
+                    "sales": [
                         {
                             "id": "G3-1",
-                            "name": "iPhone 14"
+                            "product": "iPhone 14"
                         },
                         {
                             "id": "G3-2",
-                            "name": "AirPods Pro"
+                            "product": "AirPods Pro"
                         }
                     ]
                 },
                 {
                     "id": "G2-2",
                     "name": "Jesus Llacta",
-                    "group3": [
+                    "sales": [
                         {
                             "id": "G3-1",
-                            "name": "MacBook Pro"
+                            "product": "MacBook Pro"
                         }
                     ]
                 }
@@ -33,33 +33,33 @@
         },
         {
             "id": "G1-2",
-            "name": "Lima",
-            "group2": [
+            "city": "Lima",
+            "sellers": [
                 {
                     "id": "G2-1",
                     "name": "Lionel Messi",
-                    "group3": [
+                    "sales": [
                         {
                             "id": "G3-1",
-                            "name": "Home Pod Mini"
+                            "product": "Home Pod Mini"
                         }
                     ]
                 },
                 {
                     "id": "G2-2",
                     "name": "Cristiano ronaldo",
-                    "group3": [
+                    "sales": [
                         {
                             "id": "G3-1",
-                            "name": "iPhone 12 Mini"
+                            "product": "iPhone 12 Mini"
                         },
                         {
                             "id": "G3-2",
-                            "name": "Apple Watch"
+                            "product": "Apple Watch"
                         },
                         {
                             "id": "G3-3",
-                            "name": "Apple Tv"
+                            "product": "Apple Tv"
                         }
                     ]
                 }
