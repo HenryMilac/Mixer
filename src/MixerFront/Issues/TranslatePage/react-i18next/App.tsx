@@ -29,6 +29,10 @@ export default function App() {
 
     const [t] = useTranslation('global');
 
+    const productsData = t("dataInformation", {returnObjects: true})
+
+    
+
     return (
         <div className="p-5 relative pb-24 max-w-2xl mx-auto">
             <div className="mb-7 border-b border-gray-300">
@@ -36,8 +40,11 @@ export default function App() {
             </div>
             
             <div className="flex flex-col gap-y-5">
-                <CardProduct/>
-                <CardProduct/>
+                {productsData.map( productData => (
+                    <CardProduct key={productData.id}
+                        productData={productData}
+                    />
+                ))}
             </div>
 
             <BtnTranslate/>

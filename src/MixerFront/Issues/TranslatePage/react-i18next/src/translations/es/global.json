@@ -3,11 +3,36 @@
     "dataInformation": [
         {
             "id": 1,
-            "nameProduct": "MiIphone 12",
+            "nameProduct": "Iphone 12",
             "categoryProduct": "Teléfonos",
+            "salesTitle": "Ventas",
             "sales": [
                 {
                     "id": "P1",
+                    "dateTitle": "Fecha",
+                    "date": "2021-01-01",
+                    "total": "13200",
+                    "colors&units": [
+                        {
+                            "color": "Rojo",
+                            "units": "2"
+                        },
+                        {
+                            "color": "Azul",
+                            "units": "1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "nameProduct": "Macbook Pro",
+            "categoryProduct": "Macs",
+            "salesTitle": "Ventas",
+            "sales": [
+                {
+                    "id": "P2",
                     "dateTitle": "Fecha",
                     "date": "2021-01-01",
                     "total": "13200",
