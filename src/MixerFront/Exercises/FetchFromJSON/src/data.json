@@ -1,74 +1,69 @@
 {
-    "titleApp": "Products",
-    "productsData": [
+    "title": "Apple Store",
+    "group1": [
         {
-            "id": 1,
-            "nameProduct": "Iphone 12",
-            "categoryProduct": "Phones",
-            "salesTitle": "Sales",
-            "sales": [
+            "id": "G1-1",
+            "name": "Huancayo",
+            "group2": [
                 {
-                    "id": 1,
-                    "dateTitle": "Date",
-                    "date": "2021-01-01",
-                    "total": "13200",
-                    "colors&units": [
+                    "id": "G2-1",
+                    "name": "Henry Ramirez",
+                    "group3": [
                         {
-                            "color": "Red",
-                            "units": "49"
+                            "id": "G3-1",
+                            "name": "iPhone 14"
                         },
                         {
-                            "color": "Blue",
-                            "units": "9"
+                            "id": "G3-2",
+                            "name": "AirPods Pro"
                         }
                     ]
                 },
                 {
-                    "id": 2,
-                    "dateTitle": "Date",
-                    "date": "2023-11-12",
-                    "total": "843200",
-                    "colors&units": [
+                    "id": "G2-2",
+                    "name": "Jesus Llacta",
+                    "group3": [
                         {
-                            "color": "Yelow",
-                            "units": "321"
-                        },
-                        {
-                            "color": "Brown",
-                            "units": "96"
-                        },
-                        {
-                            "color": "Gold",
-                            "units": "4390"
+                            "id": "G3-1",
+                            "name": "MacBook Pro"
                         }
                     ]
                 }
             ]
         },
         {
-            "id": 2,
-            "nameProduct": "MacBook Pro",
-            "categoryProduct": "Macs",
-            "salesTitle": "Sales",
-            "sales": [
+            "id": "G1-2",
+            "name": "Lima",
+            "group2": [
                 {
-                    "id": 1,
-                    "dateTitle": "Date",
-                    "date": "2021-01-01",
-                    "total": "131100",
-                    "colors&units": [
+                    "id": "G2-1",
+                    "name": "Lionel Messi",
+                    "group3": [
                         {
-                            "color": "Purple",
-                            "units": "210"
+                            "id": "G3-1",
+                            "name": "Home Pod Mini"
+                        }
+                    ]
+                },
+                {
+                    "id": "G2-2",
+                    "name": "Cristiano ronaldo",
+                    "group3": [
+                        {
+                            "id": "G3-1",
+                            "name": "iPhone 12 Mini"
                         },
                         {
-                            "color": "Pink",
-                            "units": "4"
+                            "id": "G3-2",
+                            "name": "Apple Watch"
+                        },
+                        {
+                            "id": "G3-3",
+                            "name": "Apple Tv"
                         }
                     ]
                 }
             ]
         }
-    ],
-    "buttonTranslate": "Translate"
+    ]
 }
