@@ -8,9 +8,9 @@ export default function App() {
   return (
     <div>
       {/* <Reacti18next/> */}
-      <FetchFromJSON/>
+      {/* <FetchFromJSON/> */}
 
-      {/* <Z/> */}
+      <Z/>
     </div>
   )
 }
