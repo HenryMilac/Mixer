@@ -1,18 +1,19 @@
-import Stores from './src/components/Stores'
-import dataBase from './src/data.json'
+import CardStore from "./src/components/CardStore";
+import dataBase from './src/data.json';
 
 export default function FetchFromJSON() {
+    return (
+        <div className="p-5">
+            <div className="mb-5">
+                <p>{dataBase.title} - Stores:</p>
+                <hr />
+            </div>
 
-    return(
-        <div>
-            <p className='p-4'>{dataBase.title}</p>
-            <hr />
-
-            <div className='my-2 p-4'>
-                <p>Stores:</p>
-                <Stores/>
+            <div className="flex flex-col gap-y-5">
+                <CardStore
+                    stores={dataBase.stores}
+                />
             </div>
         </div>
-
     )
 }
