@@ -1,35 +1,31 @@
 {
-    "title": "App",
-    "group1": [
+    "title": "Apple Store",
+    "stores": [
         {
             "id": "G1-1",
-            "name": " Group 1 - 1",
-            "group2": [
+            "city": "Huancayo",
+            "sellers": [
                 {
                     "id": "G2-1",
-                    "name": "Group 2 - 1",
-                    "group3": [
+                    "name": "Henry Ramirez",
+                    "sales": [
                         {
                             "id": "G3-1",
-                            "name": "Group 3 - 1"
+                            "product": "iPhone 14"
                         },
                         {
                             "id": "G3-2",
-                            "name": "Group 3 - 2"
+                            "product": "AirPods Pro"
                         }
                     ]
                 },
                 {
                     "id": "G2-2",
-                    "name": "Group 2 - 2",
-                    "group3": [
+                    "name": "Jesus Llacta",
+                    "sales": [
                         {
                             "id": "G3-1",
-                            "name": "Group 3 - 1"
-                        },
-                        {
-                            "id": "G3-2",
-                            "name": "Group 3 - 2"
+                            "product": "MacBook Pro"
                         }
                     ]
                 }
@@ -37,33 +33,33 @@
         },
         {
             "id": "G1-2",
-            "name": "Group 1 - 2",
-            "group2": [
+            "city": "Lima",
+            "sellers": [
                 {
                     "id": "G2-1",
-                    "name": "Group 2 - 1",
-                    "group3": [
+                    "name": "Lionel Messi",
+                    "sales": [
                         {
                             "id": "G3-1",
-                            "name": "Group 3 - 1"
-                        },
-                        {
-                            "id": 2,
-                            "name": "Group 3 - 2"
+                            "product": "Home Pod Mini"
                         }
                     ]
                 },
                 {
                     "id": "G2-2",
-                    "name": "Group 2 - 2",
-                    "group3": [
+                    "name": "Cristiano ronaldo",
+                    "sales": [
                         {
-                            "id": "G3-2",
-                            "name": "Group 3 - 1"
+                            "id": "G3-1",
+                            "product": "iPhone 12 Mini"
                         },
                         {
-                            "id": 4,
-                            "name": "Group 3 - 2"
+                            "id": "G3-2",
+                            "product": "Apple Watch"
+                        },
+                        {
+                            "id": "G3-3",
+                            "product": "Apple Tv"
                         }
                     ]
                 }
