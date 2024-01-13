@@ -7,10 +7,10 @@ import Reacti18next from "./MixerFront/Issues/TranslatePage/react-i18next/Reacti
 export default function App() {
   return (
     <div>
-      {/* <Reacti18next/> */}
+      <Reacti18next/>
       {/* <FetchFromJSON/> */}
 
-      <Z/>
+      {/* <Z/> */}
     </div>
   )
 }
