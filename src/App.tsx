@@ -12,11 +12,11 @@ export default function App() {
     <div>
       {/* <IconMenuToNavbar/> */}
       {/* <SwipeEditDelete/> */}
-      <FormNewEditDelete/>
+      {/* <FormNewEditDelete/> */}
       {/* <Reacti18next/> */}
       {/* <FetchFromJSON/> */}
 
-      {/* <Z/> */}
+      <Z/>
     </div>
   )
 }
