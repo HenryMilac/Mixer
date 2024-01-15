@@ -1,10 +1,10 @@
-import { datos } from "./src/users"
+import { useUsersStore } from "./src/store/users.store"
 import { useEffect } from "react"
 
 export default function ZustandFazt() {
 
-    const {getPosts} = datos()
-    const {posts} = datos(state => {
+    const {getPosts} = useUsersStore()
+    const {posts} = useUsersStore(state => {
         return {
             posts: state.posts
         }
@@ -15,12 +15,15 @@ export default function ZustandFazt() {
 
     return (
         <div className="p-5">
-            <h1>Mapping: </h1>
+            <h1>Mapping:</h1>
             <hr/>
             
             <div className="mt-5">
                 {posts.map(post => (
-                    <p key={post.id}>{post.title}</p>
+                    <div key={post.id} className="border border-white p-2 mt-5">
+                        <p>Title: {post.title}</p>
+                        <p>Body: {post.body}</p>
+                    </div>
                 ))}
             </div>
         </div>
