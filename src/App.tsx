@@ -23,8 +23,7 @@ export default function App() {
       {/* <FormNewEditDelete/> */}
       {/* <Reacti18next/> */}
       {/* <FetchFromJSON/> */}
-      {/* <ZustandMe/> */}
-      <ZustandFernandoHerrera/>
+      {/* <ZustandFernandoHerrera/> */}
       {/* <ZustandFazt/> */}
 
 
