@@ -2,35 +2,21 @@ import { usePersonsStore } from "./store/persons.store"
 
 export default function ZustandFernandoHerrera() {
 
-    const firstName = usePersonsStore(state => state.firstName)
-    const lastName = usePersonsStore(state => state.lastName)
-    const setFirstName = usePersonsStore(state => state.setFirstName)
-    const setLastName = usePersonsStore(state => state.setLastName)
+    const fullName = usePersonsStore(state => state.fullName)
+    const setFullName = usePersonsStore(state => state.setFullName)
 
     return (
         <div className="p-5 flex flex-col gap-y-5">
-            <div className="flex gap-x-10">
-                <div>
-                    <label htmlFor="">First Name:</label>
-                    <input type="text" className="border border-gray-400"
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="">Last Name:</label>
-                    <input type="text" className="border border-gray-400"
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
-                    />
-                </div>
+            <div>
+                <label htmlFor="">First Name:</label>
+                <input type="text"
+                    value={fullName} className="text-black"
+                    onChange={(e) => setFullName(e.target.value)}
+                />
             </div>
 
-            <div className="bg-gray-100 p-5">
-                <p>{`{`}</p>
-                <p>"firstName": "{firstName}",</p>
-                <p>"lastName": "{lastName}",</p>
-                <p>{`}`}</p>
+            <div className="border border-white p-3">
+                <p>Full Name: {fullName}</p>
             </div>
         </div>
     )

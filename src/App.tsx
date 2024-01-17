@@ -24,7 +24,7 @@ export default function App() {
       {/* <Reacti18next/> */}
       {/* <FetchFromJSON/> */}
       {/* <ZustandMe/> */}
-      {/* <ZustandFernandoHerrera/> */}
+      <ZustandFernandoHerrera/>
       {/* <ZustandFazt/> */}
 
 

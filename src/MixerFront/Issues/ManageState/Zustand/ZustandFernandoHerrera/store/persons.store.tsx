@@ -3,27 +3,23 @@ import { persist } from "zustand/middleware";
 import { customSessionStorage } from "./storages/session.storage";
 
 
-
-interface PersonsState {
-    firstName: string
-    lastName: string
-}
-interface PersonsActions {
-    setFirstName: (value: string) => void
-    setLastName: (value: string) => void
+// ----- Types
+interface Persons {
+    fullName: string
+    setFullName: (value: string) => void
 }
 
 
 
 
 
-const storeAPI: StateCreator<PersonsState & PersonsActions> = (set) => ({
-    firstName: '',
-    lastName: '',
-    setFirstName: (value: string) => set({firstName: value}),
-    setLastName: (value: string) => set({lastName: value}),
+// ----- StateCreator
+const storeAPI: StateCreator<Persons> = (set) => ({
+    fullName: '',
+    setFullName: (value: string) => set({fullName: value}),
 })
-export const usePersonsStore = create<PersonsState & PersonsActions>()(
+// ----- Store
+export const usePersonsStore = create<Persons>()(
     persist(storeAPI, {
         name: 'persons-store',
         storage: customSessionStorage,
