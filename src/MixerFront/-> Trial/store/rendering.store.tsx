@@ -1,22 +1,11 @@
-import { StateCreator, create } from "zustand";
-import { persist } from "zustand/middleware";
-import { customSessionStorage } from "./storages/sessionStore";
-
+import { create } from "zustand";
 
 interface RenderingStore {
-    text: string,
-    setText: (textValue: string) => void
+    text: string;
+    setText: (valueText: string) => void;
 }
 
-
-const storeAPI: StateCreator<RenderingStore> = set => ({
+export const useRenderingStore = create<RenderingStore>((set) => ({
     text: '',
-    setText: (textValue) => set({text: textValue})
-})
-
-export const useRenderingStore = create<RenderingStore>()(
-    persist(storeAPI, {
-        name: 'renderingStore-store',
-        storage: customSessionStorage
-    })
-)
+    setText: (valueText) => set({text: valueText})
+}))

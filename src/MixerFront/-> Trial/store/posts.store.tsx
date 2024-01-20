@@ -2,14 +2,14 @@ import { create } from "zustand";
 
 interface PostsStore {
     posts: any[];
-    getPosts: () => void;
+    fetchPosts: () => void;
+    clearPosts: () => void;
 }
 
-export const usePostsStore = create<PostsStore>((set) => ({
+export const postsStore = create<PostsStore>((set) => ({
     posts: [],
-    getPosts: () => {
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then(response => response.json())
-            .then(data => set({ posts: data}))
-    }
+    fetchPosts: () => fetch("https://jsonplaceholder.typicode.com/posts")
+        .then((res) => res.json())
+        .then(data => set(state => ({ ...state, posts: data }))),
+    clearPosts: () => set(state => ({ ...state, posts: []}))
 }))

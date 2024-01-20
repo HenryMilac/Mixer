@@ -7,11 +7,10 @@ export default function Trial() {
 
     return (
         <div>
-            <input type="text" placeholder="Put your text" className="text-black"
+            <input type="text" placeholder="Write yout text" className="text-black"
                 value={text}
-                onChange={(e) => setText(e.target.value)}
+                onChange={e => setText(e.target.value)}
             />
-
             <p>Text: {text}</p>
         </div>
     )
