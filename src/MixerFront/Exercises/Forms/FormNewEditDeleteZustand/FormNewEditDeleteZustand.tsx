@@ -1,6 +1,6 @@
 import { useNotesStore } from "./store/notes.store"
 
-export default function FormNotesNewEditDeleteZustand() {
+export default function FormNewEditDeleteZustand() {
 
   const notes = useNotesStore(state => state.notes)
   const note = useNotesStore(state => state.note)

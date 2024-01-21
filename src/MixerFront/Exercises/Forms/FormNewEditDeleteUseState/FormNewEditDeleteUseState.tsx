@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function FormNewEditDelete() {
+export default function FormNewEditDeleteUseState() {
 
     const [persons, setPersons] = useState([])
     const [person, setPerson] = useState({})
