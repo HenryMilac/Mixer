@@ -47,35 +47,39 @@ export default function FormNewEditDelete() {
     }, [person])
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <div>
+        <div className="max-w-2xl mx-auto py-10 flex flex-col gap-y-10">
+            <form onSubmit={handleSubmit} className="border border-white p-3 flex flex-col gap-y-5">
+                <h1 className="text-2xl border-b border-white">Form:</h1>
+                <div className="flex flex-col">
                     <label htmlFor="">Name: </label>
-                    <input type="text" placeholder="Name" className="border"
+                    <input type="text" placeholder="Name" className="border text-black"
                         value={name}
                         onChange={(e) => {setName(e.target.value)}}
                     />
                 </div>
-                <div>
+                <div className="flex flex-col">
                     <label htmlFor="">Age: </label>
-                    <input type="number" placeholder="Age" className="border"
+                    <input type="number" placeholder="Age" className="border text-black"
                         value={age}
                         onChange={(e) => {setAge(e.target.value)}}
                     />
                 </div>
-                <input type="submit" value={person.id ? 'Edit': 'Send'} />
+                <input type="submit" value={person.id ? 'Edit': 'Send'} className="border py-1 px-5 cursor-pointer"/>
             </form>
             
-            {persons.map((person) => (
-                <div className="flex justify-between" key={person.id}>
-                    <p>{person.name}</p>
-                    <p>{person.age}</p>
-                    <div className="">
-                        <button onClick={() => setPerson(person)}>Edit</button>
-                        <button onClick={() => handleDelete(person.id)}>Delete</button>
+            <div className="flex flex-col gap-y-5">
+                <h1 className="text-2xl border-b border-white">Result:</h1>
+                {persons.map((person) => (
+                    <div className="flex justify-between" key={person.id}>
+                        <p>{person.name}</p>
+                        <p>{person.age}</p>
+                        <div className="">
+                            <button onClick={() => setPerson(person)} className="mr-5">Edit</button>
+                            <button onClick={() => handleDelete(person.id)}>Delete</button>
+                        </div>
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     )
 }

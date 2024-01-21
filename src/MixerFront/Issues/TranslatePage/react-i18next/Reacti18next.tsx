@@ -1,9 +1,6 @@
 import { I18nextProvider } from "react-i18next";
 import i18next from "i18next";
-
 import App from "./App";
-
-
 
 
 
@@ -14,3 +11,6 @@ export default function Reacti18next() {
         </I18nextProvider>
     )
 }
+
+
+// Remind! this wrap, it will be used in the root component (index.html), for example

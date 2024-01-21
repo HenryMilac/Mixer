@@ -1,6 +1,6 @@
 import { create } from "zustand"
 
-export const datos = create((set) => {
+export const useUsersStore = create((set) => {
     return {
         posts: [],
         getPosts: async () => {

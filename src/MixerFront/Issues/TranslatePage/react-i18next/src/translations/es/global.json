@@ -1,8 +1,9 @@
 {
     "titleApp": "Productos",
-    "dataInformation": [
+    "dataProducts": [
         {
             "id": 1,
+            "titleProduct": "Producto",
             "nameProduct": "Iphone 12",
             "categoryProduct": "Teléfonos",
             "salesTitle": "Ventas",
@@ -10,15 +11,16 @@
                 {
                     "id": "P1",
                     "dateTitle": "Fecha",
-                    "date": "2021-01-01",
-                    "total": "13200",
-                    "colors&units": [
+                    "date": "2021-03-30",
+                    "colorsUnits": [
                         {
                             "color": "Rojo",
+                            "unitTitle": "unidades",
                             "units": "2"
                         },
                         {
                             "color": "Azul",
+                            "unitTitle": "unidades",
                             "units": "1"
                         }
                     ]
@@ -27,23 +29,42 @@
         },
         {
             "id": 2,
-            "nameProduct": "Macbook Pro",
-            "categoryProduct": "Macs",
+            "titleProduct": "Producto",
+            "nameProduct": "MacBook Pro",
+            "categoryProduct": "Laptops",
             "salesTitle": "Ventas",
             "sales": [
                 {
                     "id": "P2",
                     "dateTitle": "Fecha",
-                    "date": "2021-01-01",
-                    "total": "13200",
-                    "colors&units": [
+                    "date": "2023-12-23",
+                    "colorsUnits": [
                         {
-                            "color": "Rojo",
+                            "color": "Morado",
+                            "unitTitle": "unidades",
                             "units": "2"
                         },
                         {
-                            "color": "Azul",
+                            "color": "Negro",
+                            "unitTitle": "unidades",
                             "units": "1"
+                        }
+                    ]
+                },
+                {
+                    "id": "P3",
+                    "dateTitle": "Fecha",
+                    "date": "2023-10-11",
+                    "colorsUnits": [
+                        {
+                            "color": "Amarillo",
+                            "unitTitle": "unidades",
+                            "units": "24"
+                        },
+                        {
+                            "color": "Verde",
+                            "unitTitle": "unidades",
+                            "units": "144"
                         }
                     ]
                 }

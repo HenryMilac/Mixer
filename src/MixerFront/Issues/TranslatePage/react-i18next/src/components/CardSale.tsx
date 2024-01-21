@@ -1,18 +1,21 @@
-export default function CardSale() {
+import CardColor from "./CardColor";
+
+export default function CardSale({sales}:any) {
     return (
-        <div className="border-b border-gray-300 px-3">
-            <div className="flex justify-between">
-                <p className="font-bold">Date:</p>
-                <p className="font-bold">Total: <span>S/. </span></p>
-            </div>
-            <div className="flex justify-between">
-                <p>Blue</p>
-                <p>18 units.</p>
-            </div>
-            <div className="flex justify-between">
-                <p>Blue</p>
-                <p>18 units.</p>
-            </div>
-        </div>
+        <>
+            {sales.map((sale:any) => (
+                <div key={sale.id} className="border p-2">
+                    <div>
+                        <p>{sale.dateTitle}: {sale.date}</p>
+                    </div>
+
+                    <div className="flex flex-col gap-y-2">
+                        <CardColor
+                            colors={sale.colorsUnits}
+                        />
+                    </div>
+                </div>
+            ))}
+        </>
     )
 }
