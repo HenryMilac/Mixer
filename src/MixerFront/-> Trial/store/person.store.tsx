@@ -8,8 +8,8 @@ interface PersonStore {
 }
 
 export const usePersonStore = create<PersonStore>((set) => ({
-    name: 'Henry',
-    age: 10,
-    plusAge: (value) => set(state => ({age: state.age + value})),
-    restAge: (value) => set(state => ({age: state.age - value}))
+    name: 'John Doe',
+    age: 20,
+    plusAge: (value) => set(state => ({ age: state.age + value})),
+    restAge: (value) => set(state => ({ age: state.age - value})),
 }))

@@ -1,17 +1,16 @@
 import { create } from "zustand";
 
-interface PostsStore {
+interface PostsStore  {
     posts: any[];
-    fetchPosts: () => void;
-    clearPosts: () => void;
+    getPosts: () => void;
+    clearProducts: () => void;
 }
+
 
 export const usePostsStore = create<PostsStore>((set) => ({
     posts: [],
-    fetchPosts: () => {
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then(res => res.json())
-            .then(data => set({posts: data}))
-    },
-    clearPosts: () => set({posts: []})
+    getPosts: () => fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(res => res.json())
+        .then(data => set({posts: data})),
+    clearProducts: () => set({posts: []})
 }))

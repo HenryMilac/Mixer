@@ -1,21 +1,53 @@
-import { useProductsStore } from "./store/products.store"
+import { useNotesStore } from "./store/notes.store"
 
 export default function Trial() {
+
+  const notes = useNotesStore(state => state.notes)
+  const note = useNotesStore(state => state.note)
+  const category = useNotesStore(state => state.category)
+  const setNote = useNotesStore(state => state.setNote)
+  const setCategory = useNotesStore(state => state.setCategory)
+  const handleSubmit = useNotesStore(state => state.handleSubmit)
   
-  const products = useProductsStore(state => state.products)
 
   return (
     <div>
+
+
+      <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="">Note</label>
+            <input type="text" placeholder="Write your note" className="text-black"
+              value={note}
+              onChange={e => setNote(e.target.value)}
+            />
+          </div>
+          <div>
+        <div>
+            <label htmlFor="">Category</label>
+            <input type="string" placeholder="Write your category" className="text-black"
+              value={category}
+              onChange={e => setCategory(e.target.value)}
+            />
+          </div>
+        </div>
+        <input type="submit" value="Add" />
+      </form>
+
+
       <div>
-        <h1>Products:</h1>      
+        <p>Notes List:</p>
         <hr />
 
-        {products.map(product => (
-          <div key={product.id} className="flex justify-between">
-            <p>{product.name}: {product.units} units.</p>
+        {notes.map((note) => (
+          <div key={note.id} className="flex justify-between">
+            <div className="flex gap-x-5">
+              <p>{note.note}</p>
+              <p>{note.category}</p>
+            </div>
             <div>
-              <button>Rest</button>
-              <button>Plus</button>
+              <button>Edit</button>
+              <button>Delete</button>
             </div>
           </div>
         ))}
