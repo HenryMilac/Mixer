@@ -6,10 +6,12 @@ interface PostsStore {
     clearPosts: () => void;
 }
 
-export const postsStore = create<PostsStore>((set) => ({
+export const usePostsStore = create<PostsStore>((set) => ({
     posts: [],
-    fetchPosts: () => fetch("https://jsonplaceholder.typicode.com/posts")
-        .then((res) => res.json())
-        .then(data => set(state => ({ ...state, posts: data }))),
-    clearPosts: () => set(state => ({ ...state, posts: []}))
+    fetchPosts: () => {
+        fetch('https://jsonplaceholder.typicode.com/posts')
+            .then(res => res.json())
+            .then(data => set({posts: data}))
+    },
+    clearPosts: () => set({posts: []})
 }))

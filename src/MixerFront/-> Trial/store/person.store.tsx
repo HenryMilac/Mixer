@@ -3,13 +3,13 @@ import { create } from "zustand";
 interface PersonStore {
     name: string;
     age: number;
-    plusAge: () => void;
-    restAge: () => void;    
+    plusAge: (value: number) => void;
+    restAge: (value: number) => void;
 }
 
 export const usePersonStore = create<PersonStore>((set) => ({
     name: 'Henry',
-    age: 31,
-    plusAge: () => set(state => ({age: state.age + 1})),
-    restAge: () => set(state => ({age: state.age - 1})),
+    age: 10,
+    plusAge: (value) => set(state => ({age: state.age + value})),
+    restAge: (value) => set(state => ({age: state.age - value}))
 }))
