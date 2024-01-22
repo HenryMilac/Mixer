@@ -4,34 +4,34 @@ import { customSessionStorage } from "./storage/session.storage";
 
 interface NotesStore {
     notes: Note[];
-    note: string;
-    category: string;
-    setNote: (noteValue: string) => void;
-    setCategory: (categoryValue: string) => void;
+    noteInput: string;
+    categoryInput: string;
+    setNoteInput: (noteValue: string) => void;
+    setCategoryInput: (categoryValue: string) => void;
     handleSubmit: (e: any) => void
 }
 interface Note {
     id: number;
-    note: string;
-    category: string;
+    noteInput: string;
+    categoryInput: string;
 }
 
 const storeAPI: StateCreator<NotesStore> = set => ({
     notes: [],
-    note: '',
-    category: '',
-    setNote: (noteValue) => set({note: noteValue}),
-    setCategory: (noteValue) => set({category: noteValue}),
+    noteInput: '',
+    categoryInput: '',
+    setNoteInput: (noteValue) => set({noteInput: noteValue}),
+    setCategoryInput: (noteValue) => set({categoryInput: noteValue}),
     handleSubmit: (e) => {
         e.preventDefault()
         const noteObject = {
             id: Date.now(),
-            note: (e.target[0].value),
-            category: (e.target[1].value)
+            noteInput: (e.target[0].value),
+            categoryInput: (e.target[1].value)
         }
         set(state => ({notes: [...state.notes, noteObject]}))
-        set({note: ''})
-        set({category: ''})
+        set({noteInput: ''})
+        set({categoryInput: ''})
     },
 })
 

@@ -3,34 +3,26 @@ import { useNotesStore } from "./store/notes.store"
 export default function FormNewEditDeleteZustand() {
 
   const notes = useNotesStore(state => state.notes)
-  const note = useNotesStore(state => state.note)
-  const category = useNotesStore(state => state.category)
-  const setNote = useNotesStore(state => state.setNote)
-  const setCategory = useNotesStore(state => state.setCategory)
+  const note = useNotesStore(state => state.noteInput)
+  const category = useNotesStore(state => state.categoryInput)
+  const setNote = useNotesStore(state => state.setNoteInput)
+  const setCategory = useNotesStore(state => state.setCategoryInput)
   const handleSubmit = useNotesStore(state => state.handleSubmit)
   
 
   return (
-    <div>
+    <div className="max-w-2xl mx-auto">
 
 
-      <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="">Note</label>
-            <input type="text" placeholder="Write your note" className="text-black"
-              value={note}
-              onChange={e => setNote(e.target.value)}
-            />
-          </div>
-          <div>
-        <div>
-            <label htmlFor="">Category</label>
-            <input type="string" placeholder="Write your category" className="text-black"
-              value={category}
-              onChange={e => setCategory(e.target.value)}
-            />
-          </div>
-        </div>
+      <form onSubmit={handleSubmit} className="flex flex-col">
+        <input type="text" placeholder="Write your note" className="text-black"
+          value={note}
+          onChange={e => setNote(e.target.value)}
+        />
+        <input type="string" placeholder="Write your category" className="text-black"
+          value={category}
+          onChange={e => setCategory(e.target.value)}
+        />
         <input type="submit" value="Add" />
       </form>
 
@@ -42,8 +34,8 @@ export default function FormNewEditDeleteZustand() {
         {notes.map((note) => (
           <div key={note.id} className="flex justify-between">
             <div className="flex gap-x-5">
-              <p>{note.note}</p>
-              <p>{note.category}</p>
+              <p>{note.noteInput}</p>
+              <p>{note.categoryInput}</p>
             </div>
             <div>
               <button>Edit</button>
