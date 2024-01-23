@@ -1,26 +1,62 @@
+import { useEffect, useState } from "react"
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
+import { usePresupuestoStore } from "./store/presupuesto.store"
+
 export default function ControlPresupuesto() {
+
+    const presupuesto = usePresupuestoStore((state => state.presupuesto))
+    const setPresupuesto = usePresupuestoStore((state => state.setPresupuesto))
+    const disponible = usePresupuestoStore((state => state.disponible))
+    const setDisponible = usePresupuestoStore((state => state.setDisponible))
+    const gastado = usePresupuestoStore((state => state.gastado))
+    
+    const [porcentaje, setPorcentaje] = useState(10)
+
+    const AddPresupuesto = (e:any) => {
+        e.preventDefault()
+    }
+
+    useEffect(() => {
+        setDisponible()
+    }, [presupuesto])
+
+
     return (
-        <div className="flex flex-col gap-y-5 p-10 max-w-3xl mx-auto">
+        <div className="flex flex-col gap-y-5 p-5 max-w-3xl mx-auto">
             <div>
                 <h1>Control de presupuesto</h1>
-                <hr />
+                <hr/>
             </div>
 
-            <form className="border border-white p-3">
-                <label>Colocar Presupuesto:     </label>
-                <input type="number" name="" id="" className="text-black"/>
+            <form onClick={AddPresupuesto} className="border border-white p-3">
+                <label>Colocar Presupuesto: </label>
+                <input type="number" name="" id="" className="text-black"
+                    value={presupuesto}
+                    onChange={e => setPresupuesto(parseInt(e.target.value))}
+                />
                 <input type="submit" value="Add" />
             </form>
 
             <div className="border border-white p-3 flex justify-between">
                 <div>
-                    <p>Grafico</p>
+                    <CircularProgressbar
+                    styles={buildStyles({
+                            trailColor: '#F5F5F5',
+                            pathColor: porcentaje > 100 ? '#DC2626' : '#3B82F6',
+                            textColor: porcentaje > 100 ? '#DC2626' : '#3B82F6',
+                            textSize: '15px',
+                            pathTransitionDuration: 0.5,
+                        })}
+                        value={porcentaje}
+                        text={`${porcentaje}% Gastado`}
+                    >
+                    </CircularProgressbar>
                     <button>Resetar App</button>
                 </div>
                 <div>
-                    <p>Presupuesto: $</p>
-                    <p>Disponible: $</p>
-                    <p>Gastado: $</p>
+                    <p>Presupuesto: $ {presupuesto}</p>
+                    <p>Gastado: $ {gastado}</p>
+                    <p>Disponible: $ {disponible}</p>
                 </div>
             </div>
 
