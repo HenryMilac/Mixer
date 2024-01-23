@@ -1,5 +1,6 @@
 import { create } from "zustand";
 
+// ----- Types
 interface PresupuestoStore {
     presupuesto: number;
     disponible: number;
@@ -7,6 +8,14 @@ interface PresupuestoStore {
     setPresupuesto: (value: number) => void;
     setDisponible: () => void;
 }
+
+
+
+
+
+
+
+// ----- State
 
 export const usePresupuestoStore = create<PresupuestoStore>((set) => ({
     presupuesto: 1000,
