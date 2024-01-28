@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { usePresupuestoStore } from "./store/presupuesto.store"
-import CircularGraphic from "./components/CircularGraphic"
 import FormAddSpend from "./components/FormAddSpend"
 import SectionSpends from "./components/SectionSpends"
+import SectionSummary from "./components/SectionSummary"
 
 export default function ControlPresupuesto() {
 
@@ -39,23 +39,10 @@ export default function ControlPresupuesto() {
                 <input type="submit" value="Add" />
             </form>
 
-            <div className="border border-white p-3 flex justify-between">
-                <div>
-                    <CircularGraphic/>
-                    <button>Resetar App</button>
-                </div>
-                <div>
-                    <p>Presupuesto: $ {presupuesto}</p>
-                    <p>Gastado: $ {gastado}</p>
-                    <p>Disponible: $ {disponible}</p>
-                </div>
-            </div>
 
+            <SectionSummary/>
             <FormAddSpend/>
-
             <SectionSpends/>
-
-
         </div>
     )
 }

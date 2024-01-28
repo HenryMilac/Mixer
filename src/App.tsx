@@ -4,9 +4,60 @@ import ControlPresupuesto from "./MixerFront/Projects/ControlPresupuesto/Control
 
 
 export default function App() { return (<div>
-{/* <Trial/> */}
+
+<Trial/>
 
 {/* <FormNewEditDeleteZustand/> */}
-<ControlPresupuesto/>
+{/* <ControlPresupuesto/> */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </div>)}
