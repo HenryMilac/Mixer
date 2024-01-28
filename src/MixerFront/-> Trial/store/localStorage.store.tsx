@@ -1,4 +1,6 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import { customSessionStorage } from "./storages/session.storage";
 
 interface LocalStorageStore {
     textNoPersist: string;
@@ -16,7 +18,15 @@ export const useLocalStorageStore = create<LocalStorageStore>((set) => ({
     setTextNoPersist: (textValue) => set({textNoPersist: textValue})
 }))
 
-export const useLocalStoragePersistStore = create<LocalStoragePersistStore>((set) => ({
-    textPersist: "",
-    setTextPersist: (textValue) => set({textPersist: textValue}),
-}))
+export const useLocalStoragePersistStore = create<LocalStoragePersistStore>()(
+    persist((set) => 
+        ({
+            textPersist: "",
+            setTextPersist: (textValue) => set({textPersist: textValue})
+        }), 
+        {
+            name: "localStoragePersist",
+            storage: customSessionStorage
+        }
+    )
+)

@@ -1,9 +1,10 @@
-import { useLocalStoragePersistStore, useLocalStorageStore } from "./store/localStorage"
+import { useLocalStoragePersistStore, useLocalStorageStore } from "./store/localStorage.store"
 
 export default function Trial() {
-
+  // Persist Store
   const textPersist = useLocalStoragePersistStore(state => state.textPersist)
   const setTextPersist = useLocalStoragePersistStore(state => state.setTextPersist)
+  // No Persist Store
   const textNoPersist = useLocalStorageStore(state => state.textNoPersist)
   const setTextNoPersist = useLocalStorageStore(state => state.setTextNoPersist)
 
