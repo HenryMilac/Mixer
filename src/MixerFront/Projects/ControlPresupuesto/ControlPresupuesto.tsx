@@ -25,10 +25,7 @@ export default function ControlPresupuesto() {
 
     return (
         <div className="flex flex-col gap-y-5 p-5 max-w-3xl mx-auto">
-            <div>
-                <h1>Control de presupuesto</h1>
-                <hr/>
-            </div>
+            <h1>Control de presupuesto<hr/></h1>
 
             <form onClick={AddPresupuesto} className="border border-white p-3">
                 <label>Colocar Presupuesto: </label>
