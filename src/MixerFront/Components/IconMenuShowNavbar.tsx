@@ -4,7 +4,7 @@ import { GrMenu, GrClose } from 'react-icons/gr';
 
 
 
-export default function IconMenuToNavbar() {
+export default function IconMenuShoNavbar() {
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => {
         setIsOpen(!isOpen);
