@@ -1,3 +1,4 @@
+import React from "react"
 import { useCardsStore } from "./stores"
 
 export default function DragCardsColumnZustand() {
