@@ -4,4 +4,4 @@ export interface Card {
     status: CardsStatus;
 }
 
-export type CardsStatus = "todo" | "in-progress" | "done";
+export type CardsStatus = "todo" | "inprogress" | "done";
