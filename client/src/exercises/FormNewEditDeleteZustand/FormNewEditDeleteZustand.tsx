@@ -1,17 +1,24 @@
-import { useNotesStore } from "./store/notes.store"
+import React, { useEffect } from "react"
+import { useNotesStorePersist } from "./store/notes.store"
 
 export default function FormNewEditDeleteZustand() {
 
-  const notes = useNotesStore(state => state.notes)
-  const note = useNotesStore(state => state.note)
-  const setNote = useNotesStore(state => state.setNote)
-  const noteInput = useNotesStore(state => state.noteInput)
-  const categoryInput = useNotesStore(state => state.categoryInput)
-  const setNoteInput = useNotesStore(state => state.setNoteInput)
-  const setCategoryInput = useNotesStore(state => state.setCategoryInput)
-  const handleSubmit = useNotesStore(state => state.handleSubmit)
-  const handleDelete = useNotesStore(state => state.handleDelete)
-  
+  const notes = useNotesStorePersist(state => state.notes)
+  const note = useNotesStorePersist(state => state.note)
+  const setNote = useNotesStorePersist(state => state.setNote)
+  const noteInput = useNotesStorePersist(state => state.noteInput)
+  const setNoteInput = useNotesStorePersist(state => state.setNoteInput)
+  const categoryInput = useNotesStorePersist(state => state.categoryInput)
+  const setCategoryInput = useNotesStorePersist(state => state.setCategoryInput)
+  const handleSubmit = useNotesStorePersist(state => state.handleSubmit)
+  const handleDelete = useNotesStorePersist(state => state.handleDelete)
+
+  useEffect(() => {
+    if(Object.keys(note).length > 0){
+      setNoteInput(note.noteInput)
+      setCategoryInput(note.categoryInput)
+    }
+  }, [note])
 
   return (
     <div className="max-w-2xl mx-auto p-5">
@@ -24,7 +31,7 @@ export default function FormNewEditDeleteZustand() {
           value={categoryInput}
           onChange={e => setCategoryInput(e.target.value)}
         />
-        <input type="submit" value='Add' />
+        <input type="submit" value={note.id ? 'Edit': 'Add'} />
       </form>
 
 

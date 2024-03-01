@@ -1,54 +1,76 @@
 import { StateCreator, create } from "zustand";
-import { persist } from "zustand/middleware";
-import { customSessionStorage } from "./storage/session.storage";
+import { devtools, persist } from "zustand/middleware";
 
-interface NotesStore {
+interface NotesStorePersist {
     notes: Note[];
-    note: {}
+    note: Note;
     noteInput: string;
     categoryInput: string;
-    setNote: ({}) => void;
+    setNote: (noteObject: Note) => void;
     setNoteInput: (noteValue: string) => void;
     setCategoryInput: (categoryValue: string) => void;
-    handleSubmit: (e: any) => void
-    handleDelete: (id: number) => void
+    handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+    handleDelete: (id: number) => void;
 }
+
 interface Note {
     id: number;
     noteInput: string;
     categoryInput: string;
 }
 
-const storeAPI: StateCreator<NotesStore> = set => ({
-    notes: [],
-    note: {},
+const storeAPI: StateCreator<NotesStorePersist> = (set, get) => ({
+    notes: [] as Note[],
+    note: {} as Note,
+    setNote: (noteObject: Note) => set({ note: noteObject }),
     noteInput: '',
+    setNoteInput: (noteValue: string) => set({ noteInput: noteValue }),
     categoryInput: '',
-    setNote: (noteObject) => set({note: noteObject}),
-    setNoteInput: (noteValue) => set({noteInput: noteValue}),
-    setCategoryInput: (noteValue) => set({categoryInput: noteValue}),
-    handleSubmit: (e) => {
-        e.preventDefault()
+    setCategoryInput: (noteValue: string) => set({ categoryInput: noteValue }),
+
+    handleSubmit: (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
         const noteObject = {
-            id: Date.now(),
-            noteInput: (e.target[0].value),
-            categoryInput: (e.target[1].value)
+            noteInput: get().noteInput,
+            categoryInput: get().categoryInput
+        };
+
+        if (get().note.id) {
+            const updatedNotes = get().notes.map(note => {
+                if (note.id === get().note.id) {
+                    return {
+                        ...note,
+                        noteInput: noteObject.noteInput,
+                        categoryInput: noteObject.categoryInput
+                    };
+                }
+                return note;
+            });
+
+            set({ notes: updatedNotes });
+        } else {
+            noteObject.id = Date.now();
+            set({ notes: [...get().notes, noteObject] });
         }
-        set(state => ({notes: [...state.notes, noteObject]}))
-        
-        set({noteInput: ''})
-        set({categoryInput: ''})
+
+        set({ noteInput: '' });
+        set({ categoryInput: '' });
+        set({ note: {} });
     },
-    handleDelete: (id) => {
+    handleDelete: (id: number) => {
         set(state => ({
             notes: state.notes.filter(note => note.id !== id)
-    }))
+        }))
     }
 })
 
-export const useNotesStore = create<NotesStore>()(
-    persist(storeAPI, {
+// ------------------------------ State Persist
+export const useNotesStorePersist = create<NotesStorePersist>()(
+    devtools(persist(storeAPI, {
         name: 'renderingStore-store',
-        storage: customSessionStorage
-    })
+    }))
 )
+
+// ------------------------------ State No Persist
+export const useNotesStoreNoPersist = create(() => ({}))
