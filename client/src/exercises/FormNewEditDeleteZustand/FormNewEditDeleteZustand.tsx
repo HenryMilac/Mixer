@@ -21,7 +21,7 @@ export default function FormNewEditDeleteZustand() {
   }, [note])
 
   return (
-    <div className="max-w-2xl mx-auto p-5">
+    <div>
       <form onSubmit={handleSubmit} className="flex flex-col">
         <input type="text" placeholder="Write your note" className="text-black"
           value={noteInput}

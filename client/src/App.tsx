@@ -8,11 +8,11 @@ import Trial from './exercises/.reminder/formZustand/Trial'
 
 export default function App() {
     return (
-        <div className=''>
-            <Trial/>
+        <div className="max-w-2xl mx-auto p-7 border h-screen my-10 rounded-2xl">
+            {/* <Trial/> */}
 
             {/* <DragCardsColumnZustand/> */}
-            {/* <FormNewEditDeleteZustand/> */}
+            <FormNewEditDeleteZustand/>
         </div>
     )
 }
