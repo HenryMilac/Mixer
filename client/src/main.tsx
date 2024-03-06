@@ -10,10 +10,13 @@ const router = createBrowserRouter([
     element: <App/>
   }
 ])
+const rootElement = document.getElementById('root');
 
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+if (rootElement) {
+  ReactDOM.createRoot(rootElement).render(<RouterProvider router={router} />);
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+} else {
+  console.error("No root element found");
+}
