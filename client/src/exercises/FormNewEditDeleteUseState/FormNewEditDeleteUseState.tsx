@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react"
 interface Person {
     id: number;
     name: string;
-    age: number;
+    age: string;
 }
 
 export default function FormNewEditDeleteUseState() {
@@ -11,33 +11,32 @@ export default function FormNewEditDeleteUseState() {
     const inputRef = useRef<HTMLInputElement>(null)
 
     const [persons, setPersons] = useState<Person[]>([])
-    const [person, setPerson] = useState<Person>({ id: 0, name: '', age: 0 })
+    const [person, setPerson] = useState<Person>({})
     const [name, setName] = useState<string>('')
-    const [age, setAge] = useState<number>(0)
+    const [age, setAge] = useState<string>('')
     
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         const personObject: Person = {
-            id: person.id,
             name,
             age
         }
 
         if(person.id){
             personObject.id = person.id
-            const personUpdate = persons.map(personState =>
-                personState.id === person.id ? personObject : personState
+            const personUpdate = persons.map(personEditing =>
+                personEditing.id === person.id ? personObject : personEditing
             )
             setPersons(personUpdate)
-            setPerson({ id: 0, name: '', age: 0 })
+            setPerson({})
         }else {
             personObject.id = Date.now()
             setPersons([...persons, personObject])
         }
 
         setName('')
-        setAge(0)
+        setAge('')
 
         if(inputRef.current){
             inputRef.current.focus()
@@ -70,7 +69,7 @@ export default function FormNewEditDeleteUseState() {
                 />
                 <input type="number" placeholder="Age" className="text-black"
                     value={age}
-                    onChange={(e) => {setAge(Number(e.target.value))}}
+                    onChange={(e) => {setAge(e.target.value)}}
                 />
                 
                 <input type="submit" value={person.id ? 'Edit': 'Send'} className="border py-1 px-5 cursor-pointer"/>
