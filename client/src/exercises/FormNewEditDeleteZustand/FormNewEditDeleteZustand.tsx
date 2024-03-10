@@ -1,58 +1,55 @@
 import React, { useEffect } from "react"
-import { useNotesStorePersist } from "./store/notes.store"
+import { usePersonsStore } from "./store/persons.store"
 
 export default function FormNewEditDeleteZustand() {
 
-  const notes = useNotesStorePersist(state => state.notes)
-  const note = useNotesStorePersist(state => state.note)
-  const setNote = useNotesStorePersist(state => state.setNote)
-  const noteInput = useNotesStorePersist(state => state.noteInput)
-  const setNoteInput = useNotesStorePersist(state => state.setNoteInput)
-  const categoryInput = useNotesStorePersist(state => state.categoryInput)
-  const setCategoryInput = useNotesStorePersist(state => state.setCategoryInput)
-  const handleSubmit = useNotesStorePersist(state => state.handleSubmit)
-  const handleDelete = useNotesStorePersist(state => state.handleDelete)
+  const persons = usePersonsStore(state => state.persons)
+  const person = usePersonsStore(state => state.person)
+  const setPerson = usePersonsStore(state => state.setPerson)
+  const name = usePersonsStore(state => state.name)
+  const setName = usePersonsStore(state => state.setName)
+  const lastName = usePersonsStore(state => state.lastName)
+  const setLastName = usePersonsStore(state => state.setLastName)
+
+  const handleSubmit = usePersonsStore(state => state.handleSubmit)
+  const handleDelete = usePersonsStore(state => state.handleDelete)
 
   useEffect(() => {
-    if(Object.keys(note).length > 0){
-      setNoteInput(note.noteInput)
-      setCategoryInput(note.categoryInput)
+    if(Object.keys(person).length > 0){
+      setName(person.name as string)
+      setLastName(person.lastName as string)
     }
-  }, [note])
+  }, [person])
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="flex flex-col">
-        <input type="text" placeholder="Write your note" className="text-black"
-          value={noteInput}
-          onChange={e => setNoteInput(e.target.value)}
+    <>
+      <form onSubmit={handleSubmit}>
+        <input type="text" placeholder="Write the name" className="text-black"
+          value={name}
+          onChange={e => setName(e.target.value)}
         />
-        <input type="string" placeholder="Write your category" className="text-black"
-          value={categoryInput}
-          onChange={e => setCategoryInput(e.target.value)}
+        <input type="string" placeholder="Write the last name" className="text-black"
+          value={lastName}
+          onChange={e => setLastName(e.target.value)}
         />
-        <input type="submit" value={note.id ? 'Edit': 'Add'} />
+        <input type="submit" value={person.id ? 'Edit': 'Add'} />
       </form>
 
 
       <div>
-        <p>Notes List:</p>
-        <hr />
+        <h2>Persons List: <hr /></h2>
 
-        {notes.map((note) => (
-          <div key={note.id} className="flex justify-between">
-            <div className="flex gap-x-5">
-              <p>{note.noteInput}</p>
-              <p>{note.categoryInput}</p>
-            </div>
+        {persons.map((person) => (
+          <div key={person.id} className="flex justify-between">
+            <p>{person.name} {person.lastName}</p>
             <div>
-              <button onClick={() => setNote(note)}>Edit</button>
-              <button onClick={() => handleDelete(note.id)}>Delete</button>
+              <button onClick={() => setPerson(person)}>Edit</button>
+              <button onClick={() => handleDelete(person.id)}>Delete</button>
             </div>
           </div>
         ))}
       </div>
 
-    </div>
+    </>
   )
 }
