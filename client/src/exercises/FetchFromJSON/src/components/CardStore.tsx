@@ -1,3 +1,4 @@
+import React from 'react';
 import CardSeller from "./CardSeller";
 
 export default function CardStore({stores}:any) {

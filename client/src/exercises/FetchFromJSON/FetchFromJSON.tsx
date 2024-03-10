@@ -1,3 +1,4 @@
+import React from "react";
 import CardStore from "./src/components/CardStore";
 import dataBase from './src/data.json';
 
