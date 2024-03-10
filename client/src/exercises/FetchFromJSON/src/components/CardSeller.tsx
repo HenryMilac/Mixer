@@ -1,3 +1,4 @@
+import React from 'react';
 import CardSell from "./CardSell";
 
 export default function CardSeller({sellers}:any){
