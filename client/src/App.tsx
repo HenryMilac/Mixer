@@ -14,11 +14,11 @@ import ReuseComponent from './exercises/ReuseComponent/ReuseComponent'
 export default function App() {
     return (
         <div className="max-w-2xl mx-auto p-7 border h-screen my-10 rounded-2xl">
-            {/* <Trial/> */}
+            <Trial/>
 
             {/* <DragCardsColumnZustand/> */}
             {/* <FormNewEditDeleteZustand/> */}
-            <FormNewEditDeleteUseState/>
+            {/* <FormNewEditDeleteUseState/> */}
             {/* <ReuseComponent/> */}
         </div>
     )
