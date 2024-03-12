@@ -13,12 +13,21 @@ type FormValues = {
     dataScience: string;
     hacking: string;
     picture: string;
+    termsConditions: boolean;
 }
 
 export default function ExlFormReactHookForm() {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm<FormValues>();
+    const { 
+        register, 
+        handleSubmit, 
+        setValue, 
+        watch, 
+        formState: { errors } 
+    } = useForm<FormValues>();
+    
     const onSubmit: SubmitHandler<FormValues> = (data) => {
         console.log(data);
+        console.log('Acá tienes que usar el fetch para enviar los datos al servidor')
     };
 
     return (
@@ -87,12 +96,46 @@ export default function ExlFormReactHookForm() {
                 )}
 
                 {/* ------------------------- Picture ------------------------- */}
-                <input type="file" {...register('picture')}/>
+                {/* De esta forma nos va a mostrar el objecto: FileList, y nosotros queremos ingresar solo al nombre del archivo */}
+                {/* <input type="file" {...register('picture')}/> */}
+                {/* En este caso solo va a pasar el nombre del archivo */}
+                <input type="file" onChange={e => {
+                    if (e.target.files) {
+                        setValue('picture', e.target.files[0].name);
+                        console.log(e.target.files[0].name);
+                    }
+                }}/>
 
                 {/* ------------------------- Terms & Conditions ------------------------- */}
+                <div>
+                    <input type="checkbox" {...register('termsConditions', {
+                        required: {
+                            value: true,
+                            message: 'Debes aceptar los términos y condiciones'
+                        }
+                    })}/>
+                    <span>Términos y condiciones</span>
+                    {errors.termsConditions && <p className='text-red-600'>{errors.termsConditions.message}</p>}
+                </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
                 <input type="submit" value="Add" />
+
+                <div>
+                    <h2>Values: <hr /></h2>
+                    <pre>{JSON.stringify(watch(), null, 2)}</pre>
+                </div>
             </form>
         </div>
     );

@@ -10,8 +10,8 @@ import ExlFormReactHookForm from './components/ExlFormReactHookForm/ExlFormReact
 
 export default function App() {
     return (
-        <div className="m-5">
-            <div className='max-w-2xl p-5 border border-gray-500 rounded-xl mx-auto h-screen'>
+        <div className="m-5 h-screen">
+            <div className='max-w-2xl p-5 border border-gray-500 rounded-xl mx-auto'>
                 {/* <Trial/> */}
 
                 {/* <ExlDragCardsColumnZustand/> */}
