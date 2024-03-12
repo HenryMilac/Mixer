@@ -4,7 +4,7 @@ import FormAddSpend from "./components/FormAddSpend"
 import SectionSpends from "./components/SectionSpends"
 import SectionSummary from "./components/SectionSummary"
 
-export default function ControlPresupuesto() {
+export default function PrlControlPresupuesto() {
 
     const presupuesto = usePresupuestoStore((state => state.presupuesto))
     const setPresupuesto = usePresupuestoStore((state => state.setPresupuesto))

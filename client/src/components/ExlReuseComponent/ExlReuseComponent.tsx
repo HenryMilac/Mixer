@@ -2,7 +2,7 @@ import React from "react";
 import BtnSocialMediaBlue from "./components/BtnSocialMediaBlue";
 import BtnSocialMediaYellow from "./components/BtnSocialMediaYellow";
 
-export default function ReuseComponent() {
+export default function ExlReuseComponent() {
     return (
         <div>
             <h1>List of buttons <hr /></h1>

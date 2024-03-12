@@ -1,3 +1,4 @@
+import React from 'react'
 import 'react-swipeable-list/dist/styles.css';
 import {
     LeadingActions,
@@ -10,7 +11,7 @@ import {
 
 
 
-export default function SwipeEditDelete() {
+export default function ColSwipeEditDelete() {
     const leadingActions = () => (
         <LeadingActions>
             <SwipeAction onClick={() => console.info('swipe action triggered')}>

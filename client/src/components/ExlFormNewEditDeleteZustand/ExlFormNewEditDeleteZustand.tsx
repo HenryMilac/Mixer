@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { usePersonsStore } from "./store/persons.store"
 
-export default function FormNewEditDeleteZustand() {
+export default function ExlFormNewEditDeleteZustand() {
 
   const persons = usePersonsStore(state => state.persons)
   const person = usePersonsStore(state => state.person)

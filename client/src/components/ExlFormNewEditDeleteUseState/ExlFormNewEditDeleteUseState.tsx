@@ -6,7 +6,7 @@ interface Person {
     lastName: string;
 }
 
-export default function FormNewEditDeleteUseState() {
+export default function ExlFormNewEditDeleteUseState() {
 
     const inputRef = useRef<HTMLInputElement>(null)
 

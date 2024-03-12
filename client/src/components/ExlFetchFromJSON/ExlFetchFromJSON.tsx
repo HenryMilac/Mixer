@@ -2,7 +2,7 @@ import React from "react";
 import CardStore from "./src/components/CardStore";
 import dataBase from './src/data.json';
 
-export default function FetchFromJSON() {
+export default function ExlFetchFromJSON() {
     return (
         <div className="p-5">
             <div className="mb-5">
