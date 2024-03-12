@@ -2,7 +2,7 @@ import React from "react"
 import ColumnStatus from "./components/ColumnStatus"
 import { useCardsStore } from "./stores/cards.store"
 
-export default function DragCardsColumnZustand() {
+export default function ExlDragCardsColumnZustand() {
 
 
   const todoCards = useCardsStore(state => state.getCardsByStatus('todo'))

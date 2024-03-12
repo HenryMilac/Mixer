@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GrMenu, GrClose } from 'react-icons/gr';
 
 
 
-export default function IconMenuShoNavbar() {
+export default function ColIconMenuShoNavbar() {
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => {
         setIsOpen(!isOpen);
