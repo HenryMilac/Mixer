@@ -1,31 +1,11 @@
 import React from 'react'
-import { useForm, SubmitHandler } from 'react-hook-form'
-
-type FormValues = {
-    name: string;
-    emailAddress: string;
-    dateBirth: string;
-    password: string;
-    confirmPassword: string;
-    branch: string;
-    webDeveloper: string;
-    mobileDeveloper: string;
-    dataScience: string;
-    hacking: string;
-    picture: string;
-    termsConditions: boolean;
-}
+import { useForm } from 'react-hook-form'
 
 export default function ExlFormReactHookForm() {
-    const { 
-        register, 
-        handleSubmit, 
-        setValue, 
-        watch, 
-        formState: { errors } 
-    } = useForm<FormValues>();
-    
-    const onSubmit: SubmitHandler<FormValues> = (data) => {
+    const {register, handleSubmit, setValue, watch, reset, formState: { errors }} = useForm()
+
+    const onSubmit = (data) => {
+        reset()
         console.log(data);
         console.log('Acá tienes que usar el fetch para enviar los datos al servidor')
     };
@@ -36,22 +16,22 @@ export default function ExlFormReactHookForm() {
 
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col'>
 
-                {/* ------------------------- Name ------------------------- */}
-                <input type="text" {...register('name', { 
-                    required: {value: true, message: 'Campo requerido'}, 
+                {/* ------------------------- String ------------------------- */}
+                <input type="text" {...register('name', {
+                    required: {value: true, message: 'Campo requerido'},
                     minLength: {value: 3, message: 'Mínimo 3 caracteres'},
-                    maxLength: {value: 20, message: 'Máximo 20 caracteres' }
+                    maxLength: {value: 20, message: 'Máximo 20 caracteres'}
                 })} className='text-black' placeholder='Name'/>
                 {errors.name && <p className='text-red-600'>{errors.name.message}</p>}
 
-                {/* ------------------------- Last Name ------------------------- */}
+                {/* ------------------------- Email ------------------------- */}
                 <input type="email" {...register('emailAddress', {
                     required: {value: true, message: 'Campo requerido'},
                     pattern: {value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/, message: 'Email inválido'}
                 })} className='text-black' placeholder='Email'/>
                 {errors.emailAddress && <p className='text-red-600'>{errors.emailAddress.message}</p>}
 
-                {/* ------------------------- Date of Birth ------------------------- */}
+                {/* ------------------------- Date / 18+ ------------------------- */}
                 <input type="date" {...register('dateBirth', {
                     required: {value: true, message: 'Campo requerido'},
                     validate: (value) => {
@@ -63,21 +43,20 @@ export default function ExlFormReactHookForm() {
                 })} className='text-black'/>
                 {errors.dateBirth && <p className='text-red-600'>{errors.dateBirth.message}</p>}
 
-                {/* ------------------------- Password ------------------------- */}
+                {/* ------------------------- Password & Confirm ------------------------- */}
                 <input type="password" {...register('password', {
                     required: {value: true, message: 'Campo requerido'},
                     minLength: {value: 8, message: 'Mínimo 8 caracteres'}
                 })} className='text-black' placeholder='Password'/>
                 {errors.password && <p className='text-red-600'>{errors.password.message}</p>}
 
-                {/* ------------------------- Confirm Password ------------------------- */}
                 <input type="password" {...register('confirmPassword', {
                     required: {value: true, message: 'Campo requerido'},
                     validate: (value) => value === watch('password') || 'Las contraseñas no coinciden'
                 })} className='text-black' placeholder='Confirm Password'/>
                 {errors.confirmPassword && <p className='text-red-600'>{errors.confirmPassword.message}</p>}
 
-                {/* ------------------------- Branch ------------------------- */}
+                {/* ------------------------- Select Options ------------------------- */}
                 <select {...register('branch')} defaultValue="" className='text-black'>
                     <option value="" disabled>Select your branch</option>
                     <option value="wd">Web Developer</option>
@@ -95,7 +74,7 @@ export default function ExlFormReactHookForm() {
                     </>
                 )}
 
-                {/* ------------------------- Picture ------------------------- */}
+                {/* ------------------------- File ------------------------- */}
                 {/* De esta forma nos va a mostrar el objecto: FileList, y nosotros queremos ingresar solo al nombre del archivo */}
                 {/* <input type="file" {...register('picture')}/> */}
                 {/* En este caso solo va a pasar el nombre del archivo */}
@@ -104,9 +83,9 @@ export default function ExlFormReactHookForm() {
                         setValue('picture', e.target.files[0].name);
                         console.log(e.target.files[0].name);
                     }
-                }}/>
+                }} className='text-red-50'/>
 
-                {/* ------------------------- Terms & Conditions ------------------------- */}
+                {/* ------------------------- Checkbox ------------------------- */}
                 <div>
                     <input type="checkbox" {...register('termsConditions', {
                         required: {
@@ -130,7 +109,7 @@ export default function ExlFormReactHookForm() {
 
 
 
-                <input type="submit" value="Add" />
+                <input type="submit" value="Add" className='text-white border'/>
 
                 <div>
                     <h2>Values: <hr /></h2>
