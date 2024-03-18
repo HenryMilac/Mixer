@@ -2,10 +2,10 @@
   "name": "mixerback",
   "version": "1.0.0",
   "description": "",
-  "main": "src/faztAuthDB/index.js",
+  "main": "src/trying/index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/faztAuthDB/index.js"
+    "dev": "nodemon src/trying/index.js"
   },
   "keywords": [],
   "author": "",
