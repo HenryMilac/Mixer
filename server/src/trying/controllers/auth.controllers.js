@@ -1,8 +1,17 @@
+import user from '../models/auth.model.js'
+import bcrypt from 'bcryptjs'
 
-const registerGet = (req, res) => res.send('traer datos del usuario')
-const registerPost = (req, res) => res.send(req.body)
-
-export {
-    registerGet,
-    registerPost
+export const register = async (req, res) => {
+    const {email, password} = req.body
+    try{
+        const passwordHash = await bcrypt.hash
+        const newUser = new user({
+            email,
+            password
+        })
+        await newUser.save()
+    }catch(error){
+        console.log(error)
+    }
+    res.send('register!')
 }

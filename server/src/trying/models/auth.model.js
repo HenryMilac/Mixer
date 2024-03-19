@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const authSchema = new mongoose.Schema({
-    name: {
+    email: {
         type: 'String'
     },
     password: {
@@ -9,4 +9,4 @@ const authSchema = new mongoose.Schema({
     }
 })
 
-export default mongoose.model('auth', authSchema)
+export default mongoose.model('user', authSchema)
