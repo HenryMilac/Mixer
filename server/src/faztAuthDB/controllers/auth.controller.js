@@ -1,13 +1,14 @@
+import { createAccessToken } from '../libs/jwt.js'
 import users from '../models/user.model.js'
 import bcrypt from 'bcryptjs'
-import { createAccessToken } from '../../libs/jwt.js'
+
 
 export const register = async(req, res) => {
-    const { name, password } = req.body
+    const { email, password } = req.body
     try{
         const passwordHash = await bcrypt.hash(password, 10)
         const newUser = new users({ 
-            name, 
+            email, 
             password: passwordHash
         })
         const userSaved = await newUser.save()
@@ -16,7 +17,7 @@ export const register = async(req, res) => {
         // Envía una respuesta JSON al cliente con solo los datos necesarios para la interfaz de usuario (Front). No es necesario enviarle toda la información porque no lo mostrará en la pantalla
         res.json({
             id: userSaved._id,
-            name: userSaved.name,
+            email: userSaved.email,
             createdAt: userSaved.createdAt
         })
     } catch(error){
