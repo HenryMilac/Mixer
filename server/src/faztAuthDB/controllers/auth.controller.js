@@ -1,5 +1,5 @@
 import { createAccessToken } from '../libs/jwt.js'
-import users from '../models/user.model.js'
+import user from '../models/user.model.js'
 import bcrypt from 'bcryptjs'
 
 
@@ -7,14 +7,13 @@ export const register = async(req, res) => {
     const { email, password } = req.body
     try{
         const passwordHash = await bcrypt.hash(password, 10)
-        const newUser = new users({ 
+        const newUser = new user({ 
             email, 
             password: passwordHash
         })
         const userSaved = await newUser.save()
         const token = await createAccessToken({ id: userSaved._id })
         res.cookie('token', token);
-        // Envía una respuesta JSON al cliente con solo los datos necesarios para la interfaz de usuario (Front). No es necesario enviarle toda la información porque no lo mostrará en la pantalla
         res.json({
             id: userSaved._id,
             email: userSaved.email,
@@ -25,4 +24,30 @@ export const register = async(req, res) => {
     }
 }
 
-export const login = (req, res) => res.send('login')
+
+export const login = async(req, res) => {
+    const { email, password } = req.body
+    try{
+        const userFound = await user.findOne({email})
+        if(!userFound) return res.status(400).json({message: "User not found"})
+        2
+        const isMatch = await bcrypt.compare(password, userFound.password)
+        if(!isMatch) return res.status(400).json({message: "Incorrect password"})
+
+        const token = await createAccessToken({ id: userFound._id })
+        res.cookie('token', token);
+
+        res.json({
+            id: userFound._id,
+            email: userFound.email,
+            createdAt: userFound.createdAt
+        })
+    } catch(error){
+        res.status(500).json({ message: error.message })
+    }
+}
+
+export const logout = (req, res) => {
+    res.cookie('token', '', {expires: new Date(0)})
+    return res.sendStatus(200)
+}
