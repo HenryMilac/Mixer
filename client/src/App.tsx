@@ -1,8 +1,9 @@
 import React from 'react'
 
-import Trial from './trial/Trial'
-import ExlDragCardsColumnZustand from './components/ExldragCardsColumnZustand/ExldragCardColumnZustand'
 
+import Trial from './trial/Trial.jsx'
+import ExlDragCardsColumnZustand from './components/ExldragCardsColumnZustand/ExldragCardColumnZustand'
+import ExlFormReactHookForm from './components/ExlFormReactHookForm/ExlFormReactHookForm.jsx'
 
 
 
@@ -10,13 +11,13 @@ import ExlDragCardsColumnZustand from './components/ExldragCardsColumnZustand/Ex
 
 export default function App() {
     return (
-        <div className="max-w-2xl mx-auto p-7 border h-screen my-10 rounded-2xl">
-            {/* <Trial/> */}
+        <div className="m-5">
+            <div className='max-w-2xl p-5 border border-gray-500 rounded-xl mx-auto'>
+                <Trial/>
 
-            <ExlDragCardsColumnZustand/>
-            {/* <FormNewEditDeleteZustand/> */}
-            {/* <FormNewEditDeleteUseState/> */}
-            {/* <ReuseComponent/> */}
+                {/* <ExlDragCardsColumnZustand/> */}
+                {/* <ExlFormReactHookForm/> */}
+            </div>
         </div>
     )
-}
+}11
