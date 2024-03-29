@@ -24,8 +24,22 @@ export const register = async(req, res) => {
         console.log(error)
     }
 }
-export const login = (req, res) => {
-    res.send('login')
+export const login = async(req, res) => {
+    const {email, password} = req.body
+    try{
+        const userFound = await User.findOne({email})
+        if(!userFound) return res.status(400).json({message: 'User not found'})
+        const passwordMatch = bcrypt.compare(password, userFound.password)
+        if(!passwordMatch) return res.status(400).json({message: 'Incorrect password'})
+    
+        const token = await createAccessToken({id: userFound._id})
+        res.cookie('token', token)
+        res.json({
+            userName: userFound.userName
+        })
+    }catch(error){
+        console.log(error)
+    }
 }
 export const logout = (req, res) => {
     res.send('logout')
