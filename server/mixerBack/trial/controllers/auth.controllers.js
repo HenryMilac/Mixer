@@ -1,10 +1,12 @@
+import userModel from '../../faztAuthDB/models/user.model.js'
+import { createAccessToken } from '../libs/jwt.js'
 import User from '../models/auth.model.js'
 import bcrypt from 'bcryptjs'
-import {createAccessToken} from '../libs/jwt.js'
+
 
 export const register = async(req, res) => {
-    const {email, userName, password} = req.body
-    try{    
+    try{
+        const {email, userName, password} = req.body
         const passwordHash = await bcrypt.hash(password, 10)
         const newUser = new User({
             email,
@@ -12,36 +14,34 @@ export const register = async(req, res) => {
             password: passwordHash
         })
         const userSaved = await newUser.save()
-        const token = await createAccessToken({id: newUser._id})
+        
+        const token = createAccessToken({id: userSaved._id})
         res.cookie('token', token)
         res.json({
-            id: userSaved._id,
-            userName: userSaved.userName,
-            createdAt: userSaved.createdAt
+            userName: userSaved.userName
         })
-        res.send('register!')
     }catch(error){
-        console.log(error)
+        res.status(500).json({message: error.message})
     }
-}
+} 
 export const login = async(req, res) => {
-    const {email, password} = req.body
     try{
+        const {email, password} = req.body
         const userFound = await User.findOne({email})
-        if(!userFound) return res.status(400).json({message: 'User not found'})
-        const passwordMatch = bcrypt.compare(password, userFound.password)
-        if(!passwordMatch) return res.status(400).json({message: 'Incorrect password'})
-    
-        const token = await createAccessToken({id: userFound._id})
+        if(!userFound) return res.status(400).json({message: 'User not found!'})
+        const passwordMatch = await bcrypt.compare(password, userFound.password)
+        if(!passwordMatch) return res.status(400).json({message: 'Password incorrect'})
+
+        const token = createAccessToken({id: userFound._id})
         res.cookie('token', token)
         res.json({
-            userName: userFound.userName
+            email: userFound.email
         })
     }catch(error){
-        console.log(error)
+        res.status(500).json({message: error.message})
     }
 }
 export const logout = (req, res) => {
-    res.cookie('token', '', {expires: new Date(0)})
+    res.cookie('token', ''), {expires: new Date(0)}
     return res.sendStatus(200)
-}
+} 

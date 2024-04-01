@@ -8,4 +8,5 @@ app.use(morgan('dev'))
 app.use(json())
 app.use('/api', authRoutes)
 
+
 export default app
