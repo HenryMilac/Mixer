@@ -1,12 +1,12 @@
 import mongoose from 'mongoose'
 
-const connectDB = (req, res) => {
+
+const connectDB = async() => {
     try{
-        mongoose.connect('mongodb://localhost:27017/')
+        await mongoose.connect('mongodb://localhost:27017/')
     }catch(error){
-        return res.status(500), console.log(error)
+        console.log(error)
     }
 }
-
 
 export default connectDB
