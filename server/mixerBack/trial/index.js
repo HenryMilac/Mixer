@@ -1,13 +1,13 @@
 import express, { json } from 'express'
 import morgan from 'morgan'
-import { connectionDB } from './db.js'
-import authRoutes from './routes/auth.routes.js'
-import cookieParser from 'cookie-parser'
+import { connectDB } from './db.js'
+import authRouter from './routes/auth.routes.js'
+import taskRouter from './routes/task.routes.js'
 
 const app = express()
 app.listen(3000)
 app.use(json())
 app.use(morgan('dev'))
-app.use(cookieParser())
-connectionDB()
-app.use('/api', authRoutes)
+app.use('/api', authRouter)
+app.use('/api', taskRouter)
+connectDB()

@@ -1,16 +1,16 @@
 import mongoose, { Schema } from "mongoose";
 
 
-const userSchema = new Schema(
+const taskSchema = new Schema(
     {
-        email: {
+        title: {
             type: 'String'
         },
-        userName: {
+        description: {
             type: 'String'
         },
-        password: {
-            type: 'String'
+        user: {
+            type: Schema.Types.ObjectId
         },
     },
     {
@@ -18,4 +18,4 @@ const userSchema = new Schema(
     }
 )
 
-export default mongoose.model('User', userSchema)
+export default mongoose.model('Task', taskSchema)
