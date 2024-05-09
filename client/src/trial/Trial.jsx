@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function Trial() {
+function Trial() {
   return (
     <div>
       
     </div>
   )
 }
+
+export default Trial
