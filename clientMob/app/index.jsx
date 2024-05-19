@@ -1,3 +1,4 @@
+import { StatusBar } from "expo-status-bar";
 import { Redirect, router, Link } from "expo-router";
 import { View, Text, Image, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -58,6 +59,10 @@ export default function Welcome() {
           
         </View>
       </ScrollView>
+
+      {/* ToDo que no cambia los estilos */}
+      <StatusBar backgroundColor="#161622" style="light" />
+
     </SafeAreaView>
   );
 };

@@ -5,7 +5,7 @@ import React from 'react'
 export default function Prueba() {
   return (
     <View className={'mt-20'}>
-      <Text>pruebaaaa</Text>
+      <Text>Carrousel</Text>
       <Link href={'/homeScreen'} className=''>Inicio Usuario</Link>
     </View>
   )
