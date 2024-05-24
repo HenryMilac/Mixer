@@ -1,27 +1,22 @@
 import { StatusBar } from "expo-status-bar";
-import { Redirect, router } from "expo-router";
+import { Redirect, router, Link } from "expo-router";
 import { View, Text, Image, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import CustomButton from "./components/CustomButton";
 
-import { images } from "../constants";
-import { CustomButton, Loader } from "../components";
-import { useGlobalContext } from "../context/GlobalProvider";
+import images from "./constants/images";
 
-const Welcome = () => {
-  const { loading, isLogged } = useGlobalContext();
 
-  if (!loading && isLogged) return <Redirect href="/home" />;
 
+export default function Welcome() {
   return (
     <SafeAreaView className="bg-primary h-full">
-      <Loader isLoading={loading} />
-
       <ScrollView
         contentContainerStyle={{
           height: "100%",
         }}
       >
-        <View className="w-full flex justify-center items-center h-full px-4">
+        <View className='w-full flex justify-center items-center h-full px-4'>
           <Image
             source={images.logo}
             className="w-[130px] h-[84px]"
@@ -37,7 +32,7 @@ const Welcome = () => {
           <View className="relative mt-5">
             <Text className="text-3xl text-white font-bold text-center">
               Discover Endless{"\n"}
-              Possibilities with{" "}
+              Possibilities with{""}
               <Text className="text-secondary-200">Aora</Text>
             </Text>
 
@@ -58,12 +53,14 @@ const Welcome = () => {
             handlePress={() => router.push("/sign-in")}
             containerStyles="w-full mt-7"
           />
+
+          <Link href={'/prueba'} className='text-white'>Home</Link>
         </View>
       </ScrollView>
 
+      {/* ToDo que no cambia los estilos */}
       <StatusBar backgroundColor="#161622" style="light" />
+
     </SafeAreaView>
   );
 };
-
-export default Welcome;
