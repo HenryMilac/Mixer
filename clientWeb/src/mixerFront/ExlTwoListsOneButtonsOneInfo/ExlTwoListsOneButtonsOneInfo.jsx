@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'animate.css';
 
-export default function TwoListsOneButtonsOneInfo() {
+export default function ExlTwoListsOneButtonsOneInfo() {
     const [selectedItem, setSelectedItem] = useState('item1');
     const [animationKey, setAnimationKey] = useState(0);
 
@@ -18,7 +18,7 @@ export default function TwoListsOneButtonsOneInfo() {
                 <button className='border py-2' onClick={() => handleButtonClick('item3')}>Item 3</button>
             </div>
             <div key={animationKey} className='w-1/2 animate__animated animate__fadeIn'>
-                {selectedItem === 'item1' && <p>Item 1, description</p>}
+                {selectedItem === 'item1' && <p>Item 1, descriptiossn</p>}
                 {selectedItem === 'item2' && <p>Item 2, description</p>}
                 {selectedItem === 'item3' && <p>Item 3, description</p>}
             </div>
