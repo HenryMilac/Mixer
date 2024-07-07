@@ -1,7 +1,8 @@
 import { StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import PrlFirebaseLoginFbGoog from './src/mixerMobile/PrlFirebaseLoginFbGoog/PrlFirebaseLoginFbGoog';
 
-import PrlFirebaseLoginFbGoog from './mixerMobile/PrlFirebaseLoginFbGoog/PrlFirebaseLoginFbGoog';
+
 
 
 
