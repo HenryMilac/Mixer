@@ -12,7 +12,7 @@ import SettingsScreen from './screens/SettingsScreen'
 const Stack = createNativeStackNavigator();
 
 
-export default function PrlFirebaseLoginFbGoog() {
+export default function PrlFirebaseAuthAll() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Welcome'>

@@ -1,6 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import PrlFirebaseLoginFbGoog from './src/mixerMobile/PrlFirebaseLoginFbGoog/PrlFirebaseLoginFbGoog';
+import PrlFirebaseAuthAll from './src/mixerMobile/PrlFirebaseLoginFbGoog/PrlFirebaseAuthAll';
+
 
 
 
@@ -10,7 +11,7 @@ import PrlFirebaseLoginFbGoog from './src/mixerMobile/PrlFirebaseLoginFbGoog/Prl
 export default function App() {
   return (
     <View style={styles.container}>
-      <PrlFirebaseLoginFbGoog/>
+      <PrlFirebaseAuthAll/>
 
 
 
