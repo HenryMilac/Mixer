@@ -31,6 +31,7 @@ export default function FormRegister() {
                 style={styles.input}
                 autoCapitalize='words'
                 autoCompleteType='name'
+                // autoFocus={true}
                 textContentType='name'
                 keyboardType='default'
                 returnKeyType='next'

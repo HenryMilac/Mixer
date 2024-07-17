@@ -29,7 +29,7 @@ export const useUserStore = create((set, get) => ({
         if(user_names && user_email && user_password) {
             // setLoading(true)
             try {
-                const userCredential = await createUserWithEmailAndPassword(auth, user_names, user_email, user_password)
+                const userCredential = await createUserWithEmailAndPassword(auth, user_email, user_password)
                 const user = userCredential.user
 
                 await setDoc(doc(database, 'Users', user.uid), {
