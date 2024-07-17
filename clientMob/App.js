@@ -1,20 +1,14 @@
 import { StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import PrlFirebaseAuthAll from './src/mixerMobile/PrlFirebaseLoginFbGoog/PrlFirebaseAuthAll';
-
-
-
-
+import TmplFirebaseAuthFirestoreStorage from './src/mixerMobile/TmplFirebaseAuthFirestoreStorage/TmplFirebaseAuthFirestoreStorage';
 
 
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <PrlFirebaseAuthAll/>
-
-
-
+      <TmplFirebaseAuthFirestoreStorage/>
+      
       <StatusBar style="auto" />
     </View>
   );

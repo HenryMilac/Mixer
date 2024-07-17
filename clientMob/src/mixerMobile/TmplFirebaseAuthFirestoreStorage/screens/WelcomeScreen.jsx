@@ -5,7 +5,7 @@ export default function WelcomeScreen({navigation}) {
   return (
     <View>
       <View>
-        <Text>Información de la App</Text>
+        <Text>Página de Inicio</Text>
       </View>
       
       <TouchableOpacity onPress={() => navigation.navigate('Login')}>

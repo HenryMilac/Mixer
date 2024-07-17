@@ -1,0 +1,32 @@
+Template Authentication with Firebase: 
+- Authentication (Email, Facebook, Google)
+- Change Password
+- View Settings with user information
+- First time: WelcomeScreen, second time: HomeScreen
+- NavBar Navigation
+
+
+Para cambiar en cada proyecto:
+- .env
+- 
+
+npm install firebase
+npm install expo-constants
+npm install dotenv
+
+
+
+components
+screens
+services
+-- firebase.js
+
+No es importante tal vez sea util, solo para que lo recuerdes
+
+
+Cuando vas a usar Firebase, siempre tienes que 
+- Ignorar .env
+- Cambiar el archivo app.json por app.config.js
+- Importar dotenv
+- Poner todo como export default {}
+- Agregar el extra: {}
