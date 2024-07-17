@@ -5,7 +5,7 @@
   "main": "mixerBack/trial/index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon mixerBack/trial/index.js"
+    "dev": "nodemon mixerBack/mindApp/index.js"
   },
   "keywords": [],
   "author": "",
