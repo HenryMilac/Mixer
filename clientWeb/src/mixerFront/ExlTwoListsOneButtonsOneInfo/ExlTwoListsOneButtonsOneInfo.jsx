@@ -13,12 +13,27 @@ export default function ExlTwoListsOneButtonsOneInfo() {
     return (
         <div className='flex gap-10'>
             <div className='flex flex-col w-1/2 gap-2'>
-                <button className='border py-2' onClick={() => handleButtonClick('item1')}>Item 1</button>
-                <button className='border py-2' onClick={() => handleButtonClick('item2')}>Item 2</button>
-                <button className='border py-2' onClick={() => handleButtonClick('item3')}>Item 3</button>
+                <button 
+                    className={`border py-2 ${selectedItem === 'item1' && 'border-red-500'}`}
+                    onClick={() => handleButtonClick('item1')}
+                >
+                    Item 1
+                </button>
+                <button 
+                    className={`border py-2 ${selectedItem === 'item2' && 'border-red-500'}`}
+                    onClick={() => handleButtonClick('item2')}
+                >
+                    Item 2
+                </button>
+                <button 
+                    className={`border py-2 ${selectedItem === 'item3' && 'border-red-500'}`}
+                    onClick={() => handleButtonClick('item3')}
+                >
+                    Item 3
+                </button>
             </div>
             <div key={animationKey} className='w-1/2 animate__animated animate__fadeIn'>
-                {selectedItem === 'item1' && <p>Item 1, descriptiossn</p>}
+                {selectedItem === 'item1' && <p>Item 1, description</p>}
                 {selectedItem === 'item2' && <p>Item 2, description</p>}
                 {selectedItem === 'item3' && <p>Item 3, description</p>}
             </div>
