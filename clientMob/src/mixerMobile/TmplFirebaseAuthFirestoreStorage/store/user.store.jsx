@@ -19,11 +19,6 @@ export const useUserStore = create((set, get) => ({
 
 
 
-
-
-
-
-
     handleRegister: async() => {
         const {user_names, user_email, user_password} = get()
         if(user_names && user_email && user_password) {
@@ -50,5 +45,9 @@ export const useUserStore = create((set, get) => ({
         } else {
             Alert.alert('Error', 'Completa todos los campos')
         }
+    },
+    handleLogout: (navigation) => {
+        console.log('Logout');
+        navigation.navigate('Welcome');
     }
 }))

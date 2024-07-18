@@ -14,7 +14,7 @@ export default function WelcomeScreen({navigation}) {
       <TouchableOpacity onPress={() => navigation.navigate('Register')}>
         <Text>Crear Cuenta</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+      <TouchableOpacity onPress={() => navigation.navigate('HomeTabs')}>
         <Text>Invitado</Text>
       </TouchableOpacity>
     </View>
