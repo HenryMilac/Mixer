@@ -1,4 +1,5 @@
 import { Alert } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from "zustand";
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, database } from '../services/firebase';
@@ -49,5 +50,20 @@ export const useUserStore = create((set, get) => ({
     handleLogout: (navigation) => {
         console.log('Logout');
         navigation.navigate('Welcome');
-    }
+    },
+
+
+    checkFirstLaunch: async () => {
+        try {
+            const isFirstLaunch = await AsyncStorage.getItem('isFirstLaunch');
+            if (isFirstLaunch === null) {
+                await AsyncStorage.setItem('isFirstLaunch', 'false');
+                set({ isFirstLaunch: true });
+            } else {
+                set({ isFirstLaunch: false });
+            }
+        } catch (error) {
+            console.error('Error checking first launch:', error);
+        }
+    },
 }))
