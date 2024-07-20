@@ -1,27 +1,34 @@
-import React, { useRef } from 'react'
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import React, { useRef, useState } from 'react';
+import { StyleSheet, TextInput, View, ActivityIndicator } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 // Store
-import { useUserStore } from '../../store/user.store'
+import { useUserStore } from '../../store/user.store';
 // Components
-import BtnPrimary from '../buttons/BtnPrimary'
-
-
-
+import BtnPrimary from '../buttons/BtnPrimary';
 
 export default function FormRegister() {
-    const user_names = useUserStore(state => state.user_names)
-    const user_email = useUserStore(state => state.user_email)
-    const user_password = useUserStore(state => state.user_password)
+    const user_names = useUserStore(state => state.user_names);
+    const user_email = useUserStore(state => state.user_email);
+    const user_password = useUserStore(state => state.user_password);
     
-    const setUser_names = useUserStore(state => state.setUser_names)
-    const setUser_email = useUserStore(state => state.setUser_email)
-    const setUser_password = useUserStore(state => state.setUser_password)
-    const handleRegister = useUserStore(state => state.handleRegister)
+    const setUser_names = useUserStore(state => state.setUser_names);
+    const setUser_email = useUserStore(state => state.setUser_email);
+    const setUser_password = useUserStore(state => state.setUser_password);
+    const handleRegister = useUserStore(state => state.handleRegister);
+
+    const [loading, setLoading] = useState(false);
   
     const emailInputRef = useRef(null);
     const passwordInputRef = useRef(null);
+
+    const navigation = useNavigation();
   
-    
+    const onRegisterPress = async () => {
+        setLoading(true);
+        await handleRegister(navigation);
+        setLoading(false);
+    };
+  
     return (
         <View>
             <TextInput 
@@ -31,7 +38,6 @@ export default function FormRegister() {
                 style={styles.input}
                 autoCapitalize='words'
                 autoCompleteType='name'
-                // autoFocus={true}
                 textContentType='name'
                 keyboardType='default'
                 returnKeyType='next'
@@ -63,10 +69,9 @@ export default function FormRegister() {
                 returnKeyType='done'
             />
 
-
-            <BtnPrimary text={'Registrarse'} onPress={handleRegister}/>
+            <BtnPrimary text={loading ? <ActivityIndicator color="#111" /> : 'Registrarse'} onPress={onRegisterPress} />
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -75,4 +80,4 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         padding: 5,
     },
-})
+});
