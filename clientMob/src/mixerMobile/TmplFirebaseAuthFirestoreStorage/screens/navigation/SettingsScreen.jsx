@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, TextInput, TouchableOpacity, Image, Modal, Alert, Appearance } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { auth, database, storage } from '../../services/firebase';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, onSnapshot } from 'firebase/firestore';
 import { useUserStore } from '../../store/user.store';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import * as ImagePicker from 'expo-image-picker';
@@ -40,7 +40,7 @@ const RegistrationModal = ({ visible, onClose }) => {
 export default function SettingsScreen({ navigation }) {
   const {
     user_email, user_names, user_dateBirthday, user_genre, user_image, user_isMembresy,
-    setUser_names, setUser_dateBirthday, setUser_genre, setUser_image, setUser_isMembresy,
+    setUser_email, setUser_names, setUser_dateBirthday, setUser_genre, setUser_image, setUser_isMembresy,
     handleLogout
   } = useUserStore(state => ({
     user_email: state.user_email,
@@ -49,6 +49,7 @@ export default function SettingsScreen({ navigation }) {
     user_genre: state.user_genre,
     user_image: state.user_image,
     user_isMembresy: state.user_isMembresy,
+    setUser_email: state.setUser_email,
     setUser_names: state.setUser_names,
     setUser_dateBirthday: state.setUser_dateBirthday,
     setUser_genre: state.setUser_genre,
@@ -72,34 +73,39 @@ export default function SettingsScreen({ navigation }) {
   const colorScheme = Appearance.getColorScheme();
 
   useEffect(() => {
-    const fetchUserData = async (uid) => {
-      try {
-        const docRef = doc(database, 'Users', uid);
-        const docSnap = await getDoc(docRef);
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        const fetchUserData = async () => {
+          try {
+            const docRef = doc(database, 'Users', user.uid);
+            const unsubscribe = onSnapshot(docRef, docSnap => {
+              if (docSnap.exists()) {
+                const data = docSnap.data();
+                setUser_email(data.user_email);
+                setUser_names(data.user_names);
+                setUser_dateBirthday(data.user_dateBirthday ? new Date(data.user_dateBirthday.seconds * 1000) : new Date());
+                setUser_genre(data.user_genre);
+                setUser_image(data.user_image);
+                setUser_isMembresy(data.user_isMembresy);
+              } else {
+                console.log('No such document!');
+              }
+              setLoading(false);
+            });
+            return unsubscribe;
+          } catch (error) {
+            console.error('Error fetching user data:', error);
+            setLoading(false);
+          }
+        };
 
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setUser_names(data.user_names);
-          setUser_dateBirthday(data.user_dateBirthday ? new Date(data.user_dateBirthday.seconds * 1000) : new Date());
-          setUser_genre(data.user_genre);
-          setUser_image(data.user_image);
-          setUser_isMembresy(data.user_isMembresy);
-        } else {
-          console.log('No such document!');
-        }
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      } finally {
+        fetchUserData();
+      } else {
         setLoading(false);
       }
-    };
+    });
 
-    const user = auth.currentUser;
-    if (user) {
-      fetchUserData(user.uid);
-    } else {
-      setLoading(false);
-    }
+    return () => unsubscribe();
   }, []);
 
   const handleUpdateProfile = async () => {
