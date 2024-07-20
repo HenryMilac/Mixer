@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, ActivityIndicator, Image, Alert, Appearance } from 'react-native';
-import { auth, database } from '../../services/firebase';
-import { doc, onSnapshot } from 'firebase/firestore';
+import { StyleSheet, Text, View, ActivityIndicator, Image, Appearance } from 'react-native';
+import { auth } from '../../services/firebase';
 import { useUserStore } from '../../store/user.store';
 import imageUser from '../../../../../assets/userDefault.webp';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import fetchUserData from '../../utils/fetchUserData';
 
 export default function HomeScreen() {
   const {
@@ -31,31 +30,16 @@ export default function HomeScreen() {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
-        const fetchUserData = async () => {
-          try {
-            const docRef = doc(database, 'Users', user.uid);
-            const unsubscribe = onSnapshot(docRef, docSnap => {
-              if (docSnap.exists()) {
-                const data = docSnap.data();
-                setUser_email(data.user_email);
-                setUser_names(data.user_names);
-                setUser_dateBirthday(data.user_dateBirthday ? new Date(data.user_dateBirthday.seconds * 1000) : new Date());
-                setUser_genre(data.user_genre);
-                setUser_image(data.user_image);
-                setUser_isMembresy(data.user_isMembresy);
-              } else {
-                console.log('No such document!');
-              }
-              setLoading(false);
-            });
-            return unsubscribe;
-          } catch (error) {
-            console.error('Error fetching user data:', error);
-            setLoading(false);
-          }
-        };
-
-        fetchUserData();
+        const userUnsubscribe = fetchUserData(user.uid, {
+          setUser_email,
+          setUser_names,
+          setUser_dateBirthday,
+          setUser_genre,
+          setUser_image,
+          setUser_isMembresy,
+          setLoading,
+        });
+        return () => userUnsubscribe();
       } else {
         setLoading(false);
       }
