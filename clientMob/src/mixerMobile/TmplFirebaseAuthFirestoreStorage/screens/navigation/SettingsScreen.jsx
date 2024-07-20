@@ -3,14 +3,14 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, TextInput, TouchableOpacity, Image, Modal, Alert, Appearance } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { auth, database, storage } from '../../services/firebase';
-import { doc, getDoc, onSnapshot } from 'firebase/firestore';
+import { doc, getDoc, onSnapshot, updateDoc } from 'firebase/firestore';
 import { useUserStore } from '../../store/user.store';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import * as ImagePicker from 'expo-image-picker';
 import imageUser from '../../../../../assets/userDefault.webp';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-// Reusable Modal Component
+
 const RegistrationModal = ({ visible, onClose }) => {
   useEffect(() => {
     if (visible) {
