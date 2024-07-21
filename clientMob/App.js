@@ -1,15 +1,15 @@
 import { StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import TmplFirebaseAuthFirestoreStorage from './src/mixerMobile/TmplFirebaseAuthFirestoreStorage/TmplFirebaseAuthFirestoreStorage';
-import ExlTuContaData from './src/mixerMobile/ExlTuContaData/ExlTuContaData';
+import ExlFetchDataFirebase from './src/mixerMobile/ExlFetchDataFirebase/ExlFetchDataFirebase';
 
 
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <TmplFirebaseAuthFirestoreStorage/>
-      {/* <ExlTuContaData/> */}
+      {/* <TmplFirebaseAuthFirestoreStorage/> */}
+      <ExlFetchDataFirebase/>
       <StatusBar style="auto" />
     </View>
   );
