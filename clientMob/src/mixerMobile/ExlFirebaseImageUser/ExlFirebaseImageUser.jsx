@@ -1,30 +1,27 @@
-import { StyleSheet, Text, View, Button, Image, Alert, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import * as ImagePicker from 'expo-image-picker';
+import { StyleSheet, Text, View, Image, Alert, TouchableOpacity } from 'react-native';
+
+import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 import { storage } from './services/firebase';
-import { ref, uploadBytes, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
-import userImage from '../../../assets/userDefault.webp'
-import { addDoc } from 'firebase/firestore';
+
+import * as ImagePicker from 'expo-image-picker';
+
 import { useExerciseStore } from './store/exercise.store';
+import userImage from '../../../assets/userDefault.webp'
 
 
 
 export default function ExlFirebaseImageUser() {
-  const [image, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
   const user_email = useExerciseStore(state => state.user_email)
   const imageLink = useExerciseStore(state => state.imageLink)
   const setImageLink = useExerciseStore(state => state.setImageLink)
   const loadImageLink = useExerciseStore(state => state.loadImageLink);
 
-  useEffect(() => {
-    loadImageLink().then(() => {
-      if (imageLink) {
-        setImage(imageLink);
-      }
-    });
-  }, [imageLink]);
 
+  useEffect(() => {
+    loadImageLink();
+  }, []);
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -36,7 +33,6 @@ export default function ExlFirebaseImageUser() {
     });
     if (!result.canceled) {
       const {uri} = result.assets[0]
-      setImage(uri)
       // uri: result.assets[0].uri, hay tipos: image, video, audio, document, file
       // Usar el tipo de archivo (image, video, etc.) cuando necesites clasificar, filtrar, o manejar archivos de manera diferenciada en tu aplicación.
       // No usar el tipo de archivo cuando trabajes con un solo tipo de archivo y no necesites clasificación adicional.
@@ -80,7 +76,6 @@ export default function ExlFirebaseImageUser() {
         const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
         console.log("File available at", downloadURL);
         setImageLink(downloadURL);
-        setImage(downloadURL);
         Alert.alert('Éxito', 'Imagen de perfil actualizada.');
       }
     );
@@ -93,7 +88,7 @@ export default function ExlFirebaseImageUser() {
         <Text>{progress}%</Text>
       ) : (
         <Image
-          source={image ? { uri: image } : userImage}
+          source={imageLink ? { uri: imageLink } : userImage}
           style={{ width: 300, height: 300 }}
         />
       )}
