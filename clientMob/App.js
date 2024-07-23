@@ -10,8 +10,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       {/* <TmplFirebaseAuthFirestoreStorage/> */}
-      {/* <ExlFetchDataFirebase/> */}
       <ExlFirebaseImageUser/>
+      {/* <ExlFetchDataFirebase/> */}
       <StatusBar style="auto" />
     </View>
   );
@@ -20,7 +20,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#666',
     marginTop: 50
   },
 });

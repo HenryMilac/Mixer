@@ -89,18 +89,17 @@ export default function ExlFirebaseImageUser() {
 
   return (
     <View>
-      <Image
-        source={image ? { uri: image } : userImage}
-        style={{width: 100, height: 100}}
-      />
+      {progress > 0 && progress < 100 ? (
+        <Text>{progress}%</Text>
+      ) : (
+        <Image
+          source={image ? { uri: image } : userImage}
+          style={{ width: 300, height: 300 }}
+        />
+      )}
       <TouchableOpacity onPress={pickImage}>
         <Text>Editar foto</Text>
       </TouchableOpacity>
-
-      {progress > 0 && progress < 100 && (
-        <Text>Cargando: {progress}</Text>
-      )}
-
     </View>
   );
 }
