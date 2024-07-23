@@ -9,8 +9,8 @@ import ExlFirebaseImageUser from './src/mixerMobile/ExlFirebaseImageUser/ExlFire
 export default function App() {
   return (
     <View style={styles.container}>
-      {/* <TmplFirebaseAuthFirestoreStorage/> */}
-      <ExlFirebaseImageUser/>
+      <TmplFirebaseAuthFirestoreStorage/>
+      {/* <ExlFirebaseImageUser/> */}
       {/* <ExlFetchDataFirebase/> */}
       <StatusBar style="auto" />
     </View>

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, Image, Appearance } from 'react-native';
 import { auth } from '../../services/firebase';
 import { useUserStore } from '../../store/user.store';
+import { ref, getDownloadURL } from 'firebase/storage';
+import { storage } from '../../services/firebase';
 import imageUser from '../../../../../assets/userDefault.webp';
 import fetchUserData from '../../utils/fetchUserData';
 
@@ -39,6 +41,22 @@ export default function HomeScreen() {
           setUser_isMembresy,
           setLoading,
         });
+        
+        // Cargar la URL de la imagen del usuario desde Firebase Storage
+        const loadImage = async () => {
+          try {
+            const storageRef = ref(storage, `UsersPictureProfile/${user.email}`);
+            const downloadURL = await getDownloadURL(storageRef);
+            setUser_image(downloadURL);
+          } catch (error) {
+            console.error('Error al cargar la imagen:', error);
+          } finally {
+            setLoading(false);
+          }
+        };
+
+        loadImage();
+
         return () => userUnsubscribe();
       } else {
         setLoading(false);

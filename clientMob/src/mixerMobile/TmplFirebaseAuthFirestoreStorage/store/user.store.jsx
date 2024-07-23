@@ -24,7 +24,18 @@ export const useUserStore = create((set, get) => ({
     setUser_password: (value) => set({ user_password: value }),
     setUser_dateBirthday: (value) => set({ user_dateBirthday: value }),
     setUser_genre: (value) => set({ user_genre: value }),
-    setUser_image: (value) => set({ user_image: value }),
+    
+    setUser_image: (value) => {
+        set({ user_image: value });
+        AsyncStorage.setItem('user_image', value);
+    },
+    loadUser_image: async () => {
+        const user_image = await AsyncStorage.getItem('user_image');
+        if (user_image) {
+            set({ user_image });
+        }
+    },
+
     setUser_isMembresy: (value) => set({ user_isMembresy: value }),
 
     handleRegister: async (navigation) => {
@@ -54,7 +65,6 @@ export const useUserStore = create((set, get) => ({
             Alert.alert('Error', 'Completa todos los campos');
         }
     },
-
     handleLogout: async (navigation) => {
         try {
             await signOut(auth);
@@ -64,9 +74,10 @@ export const useUserStore = create((set, get) => ({
                 user_password: null,
                 user_dateBirthday: null,
                 user_genre: null,
-                user_image: null,
+                user_image: '', // Limpiar la imagen del usuario
                 user_isMembresy: false,
             });
+            await AsyncStorage.removeItem('user_image'); // Eliminar la imagen del almacenamiento local
             navigation.reset({
                 index: 0,
                 routes: [{ name: 'Welcome' }],
@@ -75,6 +86,7 @@ export const useUserStore = create((set, get) => ({
             console.error('Error during logout:', error);
         }
     },
+    
 
     checkFirstLaunch: async () => {
         try {
