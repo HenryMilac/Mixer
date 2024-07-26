@@ -8,7 +8,6 @@ import LoginScreen from './screens/authentication/LoginScreen';
 import RegisterScreen from './screens/authentication/RegisterScreen';
 import HomeScreen from './screens/navigation/HomeScreen';
 import SettingsScreen from './screens/navigation/SettingsScreen';
-import ChangePasswordScreen from './screens/authentication/ChangePasswordScreen';
 import { useUserStore } from './store/user.store';
 import SectLoading from './components/sections/SectLoading';
 
@@ -47,7 +46,6 @@ export default function TmplFirebaseAuthFirestoreStorage() {
         <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: false }} />
         <Stack.Screen name="HomeTabs" component={HomeTabs} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
