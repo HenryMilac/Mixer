@@ -11,6 +11,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import fetchUserData from '../../utils/fetchUserData';
 import { doc, updateDoc } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+import { handleEdit } from '../../utils/auth';
+
+
 
 const RegistrationModal = ({ visible, onClose }) => {
   useEffect(() => {
@@ -39,10 +42,10 @@ const RegistrationModal = ({ visible, onClose }) => {
 };
 
 export default function SettingsScreen({ navigation }) {
-  const [uploading, setUploading] = useState(false); // Estado para manejar la carga de la imagen
+  const [uploading, setUploading] = useState(false);
 
   const [progress, setProgress] = useState(0);
-  const [loadingImage, setLoadingImage] = useState(true); // Estado para manejar la carga de la imagen
+  const [loadingImage, setLoadingImage] = useState(true);
   const {
     user_email, user_names, user_dateBirthday, user_genre, user_image, user_isMembresy,
     setUser_email, setUser_names, setUser_dateBirthday, setUser_genre, setUser_image, setUser_isMembresy, handleLogout, loadUser_image
@@ -73,7 +76,7 @@ export default function SettingsScreen({ navigation }) {
   const [isDateModalVisible, setDateModalVisibility] = useState(false);
   const [isGenreModalVisible, setGenreModalVisibility] = useState(false);
   const [isProfileModalVisible, setProfileModalVisibility] = useState(false);
-  const [isRegistrationModalVisible, setRegistrationModalVisibility] = useState(false);
+  const [isRegistrationModalVisible, setRegistrationModalVisible] = useState(false);
 
   const colorScheme = Appearance.getColorScheme();
 
@@ -99,7 +102,7 @@ export default function SettingsScreen({ navigation }) {
         } catch (error) {
           console.error('Error al cargar la imagen:', error);
         } finally {
-          setLoadingImage(false); // Finaliza la carga de la imagen
+          setLoadingImage(false);
         }
       };
 
@@ -121,7 +124,7 @@ export default function SettingsScreen({ navigation }) {
 
   const pickImage = async () => {
     if (!user_email) {
-      setRegistrationModalVisibility(true);
+      setRegistrationModalVisible(true);
       return;
     }
   
@@ -144,7 +147,7 @@ export default function SettingsScreen({ navigation }) {
     const storageRef = ref(storage, `UsersPictureProfile/${user_email}`);
     const uploadTask = uploadBytesResumable(storageRef, blob);
   
-    setUploading(true); // Indicar que la carga está en progreso
+    setUploading(true);
   
     uploadTask.on("state_changed",
       (snapshot) => {
@@ -155,51 +158,52 @@ export default function SettingsScreen({ navigation }) {
       (error) => {
         console.error('Upload failed:', error);
         Alert.alert('Error', 'Hubo un problema al subir la imagen.');
-        setUploading(false); // Indicar que la carga ha terminado
+        setUploading(false);
       },
       async () => {
         const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
         console.log("File available at", downloadURL);
         setUser_image(downloadURL);
         Alert.alert('Éxito', 'Imagen de perfil actualizada.');
-        setUploading(false); // Indicar que la carga ha terminado
+        setUploading(false); 
       }
     );
   }
   
 
-  const handleUpdateProfile = async () => {
-    if (!user_email) {
-      setRegistrationModalVisibility(true);
+const handleUpdateProfile = async () => {
+  if (!user_email) {
+      setRegistrationModalVisible(true);
       return;
+  }
+  setUpdatingProfile(true);
+  try {
+    const user = auth.currentUser;
+    if (user) {
+      const docRef = doc(database, 'Users', user.uid);
+      await updateDoc(docRef, {
+        user_names,
+        user_dateBirthday,
+        user_genre,
+        user_image,
+        user_isMembresy,
+      });
+      loadUser_image(); 
+      setProfileModalVisibility(true);
+      setTimeout(() => setProfileModalVisibility(false), 2000);
     }
-    setUpdatingProfile(true);
-    try {
-      const user = auth.currentUser;
-      if (user) {
-        const docRef = doc(database, 'Users', user.uid);
-        await updateDoc(docRef, {
-          user_names,
-          user_dateBirthday,
-          user_genre,
-          user_image,
-          user_isMembresy,
-        });
-        loadUser_image(); // Load image after updating profile
-        setProfileModalVisibility(true);
-        setTimeout(() => setProfileModalVisibility(false), 2000);
-      }
-    } catch (error) {
-      Alert.alert('Error', 'Hubo un problema al actualizar tu información.');
-      console.error('Error updating user data:', error);
-    } finally {
-      setUpdatingProfile(false);
-    }
-  };
+  } catch (error) {
+    Alert.alert('Error', 'Hubo un problema al actualizar tu información.');
+    console.error('Error updating user data:', error);
+  } finally {
+    setUpdatingProfile(false);
+  }
+};
+
 
   const showDatePicker = () => {
     if (!user_email) {
-      setRegistrationModalVisibility(true);
+      setRegistrationModalVisible(true);
       return;
     }
     setDatePickerVisibility(true);
@@ -233,7 +237,7 @@ export default function SettingsScreen({ navigation }) {
 
   const toggleGenrePicker = () => {
     if (!user_email) {
-      setRegistrationModalVisibility(true);
+      setRegistrationModalVisible(true);
       return;
     }
     setGenrePickerVisibility(!isGenrePickerVisible);
@@ -277,18 +281,21 @@ return (
   <View>
     {/* Image */}
     <View>
-  {uploading ? (
-    <Text>{progress}%</Text>
-  ) : (
-    <Image
-      source={loadingImage ? imageUser : (user_image ? { uri: user_image } : imageUser)}
-      style={{ width: 200, height: 200 }}
-    />
-  )}
-  <TouchableOpacity onPress={pickImage}>
-    <Text>Editar foto</Text>
-  </TouchableOpacity>
-</View>
+      {uploading ? (
+        <Text>{progress}%</Text>
+      ) : (
+        <Image
+          source={loadingImage ? imageUser : (user_image ? { uri: user_image } : imageUser)}
+          style={{ width: 200, height: 200 }}
+        />
+      )}
+      <TouchableOpacity onPress={pickImage}>
+        <Text>Editar foto</Text>
+      </TouchableOpacity>
+    </View>
+
+
+
 
 
     {/* Email */}
@@ -300,7 +307,7 @@ return (
       value={user_names}
       onChangeText={text => {
         if (!user_email) {
-          setRegistrationModalVisibility(true);
+          setRegistrationModalVisible(true);
           return;
         }
         setUser_names(text);
@@ -308,6 +315,9 @@ return (
       placeholder="User Names"
       editable={!!user_email}
     />
+
+
+
 
     {/* Birthday */}
     <View>
@@ -326,12 +336,11 @@ return (
       <DateTimePickerModal
         isVisible={isDatePickerVisible}
         mode="date"
-        date={user_dateBirthday}  // Set the initial date to the current value
+        date={user_dateBirthday}
         onConfirm={handleConfirmDate}
         onCancel={hideDatePicker}
         textColor={colorScheme === 'dark' ? 'white' : 'black'}
       />
-
       <Modal
         transparent={true}
         animationType="fade"
@@ -345,6 +354,11 @@ return (
         </View>
       </Modal>
     </View>
+
+
+
+
+
 
     {/* Género */}
     <View>
@@ -410,14 +424,31 @@ return (
       </Modal>
     </View>
 
+
+
+
+
+
     {/* Membresia */}
     <Text>Membership: {user_isMembresy ? 'Premium' : 'Free'}</Text>
 
+
+
+
+
+
+
     {/* Editar */}
+      <BtnPrimary
+        text={'Editar Datos'}
+        onPress={handleEdit}
+      />
+
+
     <TouchableOpacity
       onPress={() => {
         if (!user_email) {
-          setRegistrationModalVisibility(true);
+          setRegistrationModalVisible(true);
         } else {
           handleUpdateProfile();
         }
@@ -447,6 +478,12 @@ return (
       </View>
     </Modal>
 
+
+
+
+
+
+
     {/* Cerrar Sesion */}
     <BtnPrimary
       text={user_email ? 'Cerrar Sesión' : 'Registrarse'}
@@ -456,7 +493,7 @@ return (
     {/* Registration Modal */}
     <RegistrationModal
       visible={isRegistrationModalVisible}
-      onClose={() => setRegistrationModalVisibility(false)}
+      onClose={() => setRegistrationModalVisible(false)}
     />
   </View>
 );
