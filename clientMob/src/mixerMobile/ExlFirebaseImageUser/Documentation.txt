@@ -1,0 +1,2 @@
+Sube imagen como usuario, en ajustes
+Solo puede haber una imagen con su correo, para asi optimizar especio en Storage
